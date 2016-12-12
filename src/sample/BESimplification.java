@@ -54,8 +54,7 @@ public class BESimplification {
         LinkedList<String> simplifiedExpression = new LinkedList<>();
         int lenI = baNode.length;
         BANode[] temp = new BANode[lenI];
-        int count = 1;
-        boolean flag = true;
+        int count;
         // 1. tur kontrol
         do {
             count = 0;
