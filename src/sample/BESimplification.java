@@ -96,10 +96,10 @@ public class BESimplification {
 
         for (int i = 0; i < lenI; i++) {
             if (baNode[i] != null) {
-                simplifiedExpression.add((baNode[i].getA() == 0 ? "A'" : (baNode[i].getA() == 1 ? "A" : ""))
-                        + "." + (baNode[i].getB() == 0 ? "B'" : (baNode[i].getB() == 1 ? "B" : ""))
-                        + "." + (baNode[i].getC() == 0 ? "C'" : (baNode[i].getC() == 1 ? "C" : ""))
-                        + "." + (baNode[i].getD() == 0 ? "D'" : (baNode[i].getD() == 1 ? "D" : "")) + " ");
+                simplifiedExpression.add((baNode[i].getA() == 0 ? "A'." : (baNode[i].getA() == 1 ? "A." : ""))
+                        +  (baNode[i].getB() == 0 ? "B'." : (baNode[i].getB() == 1 ? "B." : ""))
+                        +  (baNode[i].getC() == 0 ? "C'." : (baNode[i].getC() == 1 ? "C." : ""))
+                        + (baNode[i].getD() == 0 ? "D'." : (baNode[i].getD() == 1 ? "D." : "")) + " ");
             }
         }
 
