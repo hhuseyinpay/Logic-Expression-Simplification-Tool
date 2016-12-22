@@ -1,0 +1,67 @@
+package sample;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import java.util.LinkedList;
+
+public class Main2 {
+
+
+    public static void main(String[] args) {
+//        String [] expression = {"A.B.C", "A'.B'.C'", "A'.B.C", "A'.B.C'"};
+//
+//        BESimplification simplification = new BESimplification(expression);
+//
+//       // System.out.println(simplification.simplify());
+//        printTruthTable(4);
+//        FileOperation fo = new FileOperation();
+//        String [] denemeRead = fo.read("/Users/aaa/IdeaProjects/karnaughMap ver2/src/sample/");
+//
+//        for (int i = 0; i < denemeRead.length; i++) {
+//            System.out.println(denemeRead[i]);
+//        }
+//
+//        System.out.println("\n\n\n\n\n\n");
+//
+//        Converter convert = new Converter();
+//
+
+
+        String[] arr1 = {"A.B.C.D", "A'.B'.C'.D'", "A'.B.C.D'", "A'.B.C'.D","A'.B'.C'.D"
+                ,"A'.B.C'.D'","A.B.C'.D'","A.B.C'.D","A.B'.C'.D'","A.B'.C'.D"};
+        String[] arr2 = {"A'.B'.C'.D'","A.B'.C.D'","A.B'.C'.D'","A'.B'.C.D'"};
+        String[] arr3={"A'.B'.C'.D'","A.B'.C'.D'","A'.B.C'.D'","A.B.C'.D'","A'.B.C.D'","A.B.C.D'","A'.B.C'.D","A'.B.C.D","A.B.C.D","A.B.C'.D"};
+//        System.out.println(convert.ttTObe(arr));
+
+
+        KMSimplification km = new KMSimplification();
+        Converter converter = new Converter();
+
+        System.out.println(km.simplify(converter.beTOkm(arr3)));
+       // String temp = "";
+//        int i = 0;
+//        int j = 3;
+//        temp += (i == 0 ? "A'" : (i == 1 ? "B" : (i == 2 ? "A" : "B'")));
+//        temp += "." + (j == 0 ? "C'" : (j == 1 ? "D" : (j == 2 ? "C" : "D'")));
+//        System.out.println(temp);
+
+    }
+
+    private static void printTruthTable(int n) {
+        int rows = (int) Math.pow(2, n);
+
+        for (int i = 0; i < rows; i++) {
+            int counter = 0;
+            for (int j = n - 1; j >= 0; j--) {
+                System.out.print((i / (int) Math.pow(2, j)) % 2 + " ");
+                counter += 2;
+            }
+            System.out.println();
+        }
+    }
+
+}

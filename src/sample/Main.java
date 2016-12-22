@@ -390,7 +390,7 @@ public class Main extends Application {
         simplifyManuel.getStyleClass().add("button");
         simplifyManuel.setOnAction(e -> {
             try {
-                BESimplification simplification = new BESimplification(convert.toSOP(booleanA3.getText())[0].split("\\+"));
+                //BESimplification simplification = new BESimplification(convert.toSOP(booleanA3.getText())[0].split("\\+"));
             } catch (Exception ee) {
                 return;
             }
