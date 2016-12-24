@@ -102,14 +102,6 @@ public class KMSimplification {
         return true;
     }
 
-    private boolean hl2Checker(KMNode[][] kMap, int i, int j, int size) {
-        if (kMap[i][j].equal("0") || kMap[i][add(j, -1, size)].equal("0"))
-            return false;
-        kMap[i][j].setFlag(true);
-        kMap[i][add(j, -1, size)].setFlag(true);
-        return true;
-    }
-
 
     public LinkedList<String> simplify(KMNode[][] kMap) {// dont carelı için, converter içine fonksiyon yazılacak.
         LinkedList<String> simplifiedExpression = new LinkedList<>();
@@ -142,15 +134,6 @@ public class KMSimplification {
             //************
 
             // -------v4 h4 s4-------
-
-            /*if (kMap[0][0].equal("1") && kMap[0][3].equal("1") && kMap[3][0].equal("1") && kMap[3][3].equal("1")
-                    && (!kMap[0][0].isFlag() || !kMap[0][3].isFlag() || !kMap[3][0].isFlag() || !kMap[3][3].isFlag())) {
-                kMap[0][0].setFlag(true);
-                kMap[0][3].setFlag(true);
-                kMap[3][0].setFlag(true);
-                kMap[3][3].setFlag(true);
-                simplifiedExpression.add("B'.D'");
-            }*/
 
             for (int i = 0; i < 4; i++) {//vertical
                 for (int j = 0; j < 4; j++) {
@@ -227,18 +210,9 @@ public class KMSimplification {
             if (flag)//8 tane bir varsa geriye null döner.
                 return null;
 
-            /*if (kMap[0][0].equal("1") && kMap[0][1].equal("1") && kMap[3][0].equal("1") && kMap[3][1].equal("1")
-                    && (!kMap[0][0].isFlag() || !kMap[0][1].isFlag() || !kMap[3][0].isFlag() || !kMap[3][1].isFlag())) {
-                kMap[0][0].setFlag(true);
-                kMap[0][1].setFlag(true);
-                kMap[3][0].setFlag(true);
-                kMap[3][1].setFlag(true);
-                simplifiedExpression.add("B'");
-            }*/
-
 
             // -------v4 s4-------
-            for (int j = 0; j < 2; j++) { //horizontal
+            for (int j = 0; j < 2; j++) { // vertical
                 if (v4Checker(kMap, j)) {
                     simplifiedExpression.add(j == 0 ? "C'" : "C");
 
@@ -257,8 +231,8 @@ public class KMSimplification {
                 for (int j = 0; j < 2; j++) {
                     if ((!kMap[i][j].isFlag() || !kMap[add(i, 1, 4)][j].isFlag()) && v2Checker(kMap, i, j, 4)) {
                         temp = "";
-                        temp += ((j == 0) ? "C'" : "C");
                         temp += (i == 0 ? "A'" : (i == 1 ? "B" : (i == 2 ? "A" : "B'")));
+                        temp += ((j == 0) ? "C'" : "C");
                         simplifiedExpression.add(temp);
                     }
                 }
@@ -295,8 +269,25 @@ public class KMSimplification {
                         flag = false;
                 }
             }
-            if (flag)//8 tane bir varsa geriye null döner.
+            if (flag)//4 tane bir varsa geriye null döner.
                 return null;
+
+            for (int i = 0; i < 2; i++) {
+                if (!kMap[0][i].isFlag() && v2Checker(kMap, 0, i, 2))
+                    simplifiedExpression.add((i == 0 ? "B'" : "B"));
+
+                if (!kMap[i][0].isFlag() && h2Checker(kMap, i, 0, 2))
+                    simplifiedExpression.add((i == 0 ? "A'" : "A"));
+            }
+
+            for (int i = 0; i < 2; i++) {
+                for (int j = 0; j < 2; j++) {
+                    if (kMap[i][j].equal("1") && !kMap[i][j].isFlag()){
+                        simplifiedExpression.add((i == 0 ? (j == 0 ? "A'.B'" : "A'.B"): (j == 0 ? "A.B'" : "A.B")));
+                    }
+
+                }
+            }
 
 
         }

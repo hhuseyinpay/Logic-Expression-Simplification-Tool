@@ -31,18 +31,32 @@ public class Main2 {
 //
 
 
-        String[] arr1 = {"A.B.C.D", "A'.B'.C'.D'", "A'.B.C.D'", "A'.B.C'.D","A'.B'.C'.D"
-                ,"A'.B.C'.D'","A.B.C'.D'","A.B.C'.D","A.B'.C'.D'","A.B'.C'.D"};
-        String[] arr2 = {"A'.B'.C'.D'","A.B'.C.D'","A.B'.C'.D'","A'.B'.C.D'"};
-        String[] arr3={"A'.B'.C'.D'","A.B'.C'.D'","A'.B.C'.D'","A.B.C'.D'","A'.B.C.D'","A.B.C.D'","A'.B.C'.D","A'.B.C.D","A.B.C.D","A.B.C'.D"};
+        String[] arr1 = {"A.B.C.D", "A'.B'.C'.D'", "A'.B.C.D'", "A'.B.C'.D", "A'.B'.C'.D"
+                , "A'.B.C'.D'", "A.B.C'.D'", "A.B.C'.D", "A.B'.C'.D'", "A.B'.C'.D"};
+
+        String[] arr2 = {"A'.B'.C'.D'", "A.B'.C.D'", "A.B'.C'.D'", "A'.B'.C.D'"};
+        String[] arr3 = {"A'.B'.C'.D'", "A.B'.C'.D'", "A'.B.C'.D'", "A.B.C'.D'", "A'.B.C.D'", "A.B.C.D'", "A'.B.C'.D", "A'.B.C.D", "A.B.C.D", "A.B.C'.D"};
 //        System.out.println(convert.ttTObe(arr));
+
+        String[] arr4 = {"A'.B'.C'.D", "A.B'.C.D'", "A.B.C'.D'", "A'.B'.C.D'"};
+
+        String[] ar1 = {"A'.B'.C'", "A'.B'.C", "A.B'.C'", "A.B'.C"};
+
+        String[] ar2 = {"A'.B'.C'", "A'.B.C'", "A.B'.C'"};
+
+        String[] ar3 = {"A'.B'.C'", "A'.B'.C", "A.B'.C'", "A.B'.C", "A'.B.C'","A'.B.C"};
+
+        String[] ar4 = {"A'.B'.C'", "A'.B'.C", "A.B'.C'", "A.B'.C", "A'.B.C'","A'.B.C","A.B.C'", "A.B.C"};
+
+        String[] a1 = {"A'.B'", "A'.B"};
+        String[] a2 = {"A'.B'", "A'.B","A.B'"};
 
 
         KMSimplification km = new KMSimplification();
         Converter converter = new Converter();
 
-        System.out.println(km.simplify(converter.beTOkm(arr3)));
-       // String temp = "";
+        System.out.println(km.simplify(converter.beTOkm(a2)));
+        // String temp = "";
 //        int i = 0;
 //        int j = 3;
 //        temp += (i == 0 ? "A'" : (i == 1 ? "B" : (i == 2 ? "A" : "B'")));

@@ -1,4 +1,4 @@
-package ver5;
+package sample;
 
 
 /**
