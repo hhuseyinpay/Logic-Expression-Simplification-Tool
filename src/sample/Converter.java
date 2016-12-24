@@ -1,4 +1,5 @@
-package sample;
+package ver5;
+
 
 /**
  * Created by aaa on 12.12.2016.
@@ -103,9 +104,76 @@ public class Converter {
 
 
     public String[] beTOtt(String be) {
+        int count = 0;
 
-        return null;
+        if (be.contains("B")) {
+            count = 2;
+        }
+        if (be.contains("C")) {
+            count = 3;
+        }
+        if (be.contains("D")) {
+            count = 4;
+        }
+
+        String[] temp = be.split("\\+");
+        String[] F = null;
+        switch (count) {
+            case 2:
+                for (int i = 0; i < temp.length; i++) {
+                    F = new String[4];
+                    if (F[0].equals("0")) F[0] = temp[i].equals("A'.B'") ? "1" : "0";
+                    if (F[1].equals("0")) F[1] = temp[i].equals("A'.B") ? "1" : "0";
+                    if (F[2].equals("0")) F[2] = temp[i].equals("A.B'") ? "1" : "0";
+                    if (F[3].equals("0")) F[3] = temp[i].equals("A.B") ? "1" : "0";
+                }
+                break;
+            case 3:
+                F = new String[8];
+                for (int i = 0; i < F.length; i++) {
+                    F[i] = "0";
+                }
+                for (int i = 0; i < temp.length; i++) {
+
+
+                    if (F[0].equals("0")) F[0] = temp[i].equals("A'.B'.C'") ? "1" : "0";
+                    if (F[1].equals("0")) F[1] = temp[i].equals("A'.B'.C") ? "1" : "0";
+                    if (F[2].equals("0")) F[2] = temp[i].equals("A'.B.C'") ? "1" : "0";
+                    if (F[3].equals("0")) F[3] = temp[i].equals("A'.B.C") ? "1" : "0";
+                    if (F[4].equals("0")) F[4] = temp[i].equals("A.B'.C'") ? "1" : "0";
+                    if (F[5].equals("0")) F[5] = temp[i].equals("A.B'.C") ? "1" : "0";
+                    if (F[6].equals("0")) F[6] = temp[i].equals("A.B.C'") ? "1" : "0";
+                    if (F[7].equals("0")) F[7] = temp[i].equals("A.B.C") ? "1" : "0";
+                }
+                break;
+            case 4:
+                for (int i = 0; i < temp.length; i++) {
+                    F = new String[16];
+                    F[0] = temp[i].equals("A'.B'.C'.D'") ? "1" : "0";
+                    F[1] = temp[i].equals("A'.B'.C'.D") ? "1" : "0";
+                    F[2] = temp[i].equals("A'.B'.C.D'") ? "1" : "0";
+                    F[3] = temp[i].equals("A'.B'.C.D") ? "1" : "0";
+                    F[4] = temp[i].equals("A'.B.C'.D'") ? "1" : "0";
+                    F[5] = temp[i].equals("A'.B.C'.D") ? "1" : "0";
+                    F[6] = temp[i].equals("A'.B.C.D'") ? "1" : "0";
+                    F[7] = temp[i].equals("A'.B.C.D") ? "1" : "0";
+                    F[8] = temp[i].equals("A.B'.C'.D'") ? "1" : "0";
+                    F[9] = temp[i].equals("A.B'.C'.D") ? "1" : "0";
+                    F[10] = temp[i].equals("A.B'.C.D'") ? "1" : "0";
+                    F[11] = temp[i].equals("A'.B'.C.D") ? "1" : "0";
+                    F[12] = temp[i].equals("A.B.C'.D'") ? "1" : "0";
+                    F[13] = temp[i].equals("A.B.C'.D") ? "1" : "0";
+                    F[14] = temp[i].equals("A.B.C.D'") ? "1" : "0";
+                    F[15] = temp[i].equals("A.B.C.D") ? "1" : "0";
+
+                }
+                break;
+        }
+
+
+        return F;
     }
+
 
     // this function has been written by Tolga Atış.
     public String[] toSOP(String Control) {

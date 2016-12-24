@@ -1,10 +1,13 @@
-package sample;
+package ver5;
 
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
@@ -26,7 +29,7 @@ public class Main extends Application {
     Button readButton, manuelButton;
     FileOperation fo;
     Converter convert = new Converter();
-    ArrayList<ChoiceBox<String>> fC = new ArrayList<>();
+    ArrayList<String> fC = new ArrayList<>();
     String css = this.getClass().getResource("application.css").toExternalForm();
     Boolean isBE = false;
     int inputs = 3;
@@ -130,21 +133,22 @@ public class Main extends Application {
                 int lenbe = read.length;
                 for (int i = 0; i < lenbe; i++) {
                     booleanA.appendText(read[i] + "+");
-                    if (read[i].length() == 2) len = 4;
-                    else if (read[i].length() == 3) len = 8;
-                    else if (read[i].length() == 4) len = 16;
+                    if (read[i].contains("D")) len = 16;
+                    else if (read[i].contains("C")) len = 8;
+                    else if (read[i].contains("B")) len = 4;
                 }
                 isBE = true;
-
+                ttfrombe.setVisible(false);
+                befromtt.setVisible(true);
             } else if (PATH.endsWith(".tt")) {
                 read = fo.read(PATH);
                 len = read.length;
                 for (int i = 0; i < len; i++) {
                     fColumn.appendText(read[i] + "\n"); //Read Truth Table
                 }
-
+                befromtt.setVisible(false);
+                ttfrombe.setVisible(true);
             }
-
 
             if (len == 4) {
                 ttable.setText("A B \n"
@@ -191,6 +195,8 @@ public class Main extends Application {
             } else {
                 fColumn.setText("ERROR");
             }
+
+
             ttable.setPrefRowCount(len);
 
 
@@ -232,11 +238,11 @@ public class Main extends Application {
             window.setScene(mainScene);
         });
 
-        HBox layout2 = new HBox();
-        layout2.setAlignment(Pos.CENTER);
-        layout2.getChildren().addAll(ttable, fColumn, buttons, simpLayOut, returnMain);
-        layout2.getStyleClass().add("readScene");
-        readScene = new Scene(layout2, 800, 800);
+        HBox readEnd = new HBox();
+        readEnd.setAlignment(Pos.CENTER);
+        readEnd.getChildren().addAll(ttable, fColumn, buttons, simpLayOut, returnMain);
+        readEnd.getStyleClass().add("readScene");
+        readScene = new Scene(readEnd, 800, 800);
         readScene.getStylesheets().add(css);
 
         //manuel enter scene
@@ -249,12 +255,19 @@ public class Main extends Application {
         rb2.setToggleGroup(group);
         RadioButton rb3 = new RadioButton("4");
         rb3.setToggleGroup(group);
+        //for manuel truth table
+
+
+
         HBox inputsLayOut = new HBox();
         inputsLayOut.getChildren().addAll(rb1,rb2,rb3);
         inputsLayOut.setAlignment(Pos.CENTER);
+        inputsLayOut.setSpacing(15);
+
         VBox topManuel = new VBox();
         topManuel.getChildren().addAll(input,inputsLayOut);
         topManuel.setAlignment(Pos.CENTER);
+        topManuel.setSpacing(15);
 
         Button withTT = new Button("With Truth Table");
         withTT.getStyleClass().add("readButton");
@@ -262,97 +275,219 @@ public class Main extends Application {
         withBB.getStyleClass().add("readButton");
         withTT.setOnAction(e -> window.setScene(manuelTTScene));
         withBB.setOnAction(e -> window.setScene(manuelBEscene));
+
         HBox layoutButtons = new HBox();
         layoutButtons.getChildren().addAll(withTT, withBB);
         layoutButtons.setAlignment(Pos.CENTER);
+        layoutButtons.setSpacing(15);
+
         VBox manuelEnd = new VBox();
         manuelEnd.getChildren().addAll(topManuel,layoutButtons);
         manuelEnd.getStylesheets().add(css);
         manuelEnd.setAlignment(Pos.CENTER);
         manuelEnd.getStyleClass().add("mainScene");
-
+        manuelEnd.setSpacing(15);
         manuelScene = new Scene(manuelEnd, 800, 800);
 
         //manuelttscene
 
-        TextArea ttable2 = new TextArea();
-        ttable2.setPrefRowCount(columnNum);
-        ttable2.getStyleClass().add("ttable");
-        ttable2.appendText("A B C\n"
-                + "0 0 0\n"
-                + "0 0 1\n"
-                + "0 1 0\n"
-                + "0 1 1\n"
-                + "1 0 0\n"
-                + "1 0 1\n"
-                + "1 1 0\n"
-                + "1 1 1");
-        ttable2.setMaxWidth(50);
-        ttable2.setEditable(false);
 
+        TextArea manuelTTable = new TextArea();
+        VBox chooses = new VBox();
+        manuelTTable.setPrefRowCount(len);
+
+        Label fCol = new Label("F Column");
         ChoiceBox<String> one = new ChoiceBox<>();
         one.getItems().addAll("0", "1", "X");
-        one.setOnAction(e -> fC.add(one));
+        one.getStyleClass().add("cb");
+        one.setOnAction(e -> fC.set(0,one.getValue()));
         ChoiceBox<String> two = new ChoiceBox<>();
         two.getItems().addAll("0", "1", "X");
-        two.setOnAction(e -> fC.add(two));
+        two.getStyleClass().add("cb2");
+        two.setOnAction(e -> fC.set(1,two.getValue()));
         ChoiceBox<String> three = new ChoiceBox<>();
         three.getItems().addAll("0", "1", "X");
-        three.setOnAction(e -> fC.add(three));
+        three.getStyleClass().add("cb");
+        three.setOnAction(e -> fC.set(2,three.getValue()));
         ChoiceBox<String> four = new ChoiceBox<>();
         four.getItems().addAll("0", "1", "X");
-        four.setOnAction(e -> fC.add(four));
+        four.getStyleClass().add("cb2");
+        four.setOnAction(e -> fC.set(3,four.getValue()));
         ChoiceBox<String> five = new ChoiceBox<>();
         five.getItems().addAll("0", "1", "X");
-        five.setOnAction(e -> fC.add(five));
+        five.getStyleClass().add("cb");
+        five.setOnAction(e -> fC.set(4,five.getValue()));
         ChoiceBox<String> six = new ChoiceBox<>();
         six.getItems().addAll("0", "1", "X");
-        six.setOnAction(e -> fC.add(six));
+        six.getStyleClass().add("cb2");
+        six.setOnAction(e -> fC.set(5,six.getValue()));
         ChoiceBox<String> seven = new ChoiceBox<>();
         seven.getItems().addAll("0", "1", "X");
-        seven.setOnAction(e -> fC.add(seven));
+        seven.getStyleClass().add("cb");
+        seven.setOnAction(e -> fC.set(6,seven.getValue()));
         ChoiceBox<String> eight = new ChoiceBox<>();
         eight.getItems().addAll("0", "1", "X");
-        eight.setOnAction(e -> fC.add(eight));
+        eight.getStyleClass().add("cb2");
+        eight.setOnAction(e -> fC.set(7,eight.getValue()));
         ChoiceBox<String> nine = new ChoiceBox<>();
         nine.getItems().addAll("0", "1", "X");
-        nine.setOnAction(e -> fC.add(nine));
+        nine.getStyleClass().add("cb");
+        nine.setOnAction(e -> fC.set(8,nine.getValue()));
         ChoiceBox<String> ten = new ChoiceBox<>();
         ten.getItems().addAll("0", "1", "X");
-        ten.setOnAction(e -> fC.add(ten));
+        ten.getStyleClass().add("cb2");
+        ten.setOnAction(e -> fC.set(9,ten.getValue()));
         ChoiceBox<String> eleven = new ChoiceBox<>();
         eleven.getItems().addAll("0", "1", "X");
-        eleven.setOnAction(e -> fC.add(eleven));
+        eleven.getStyleClass().add("cb");
+        eleven.setOnAction(e -> fC.set(10,eleven.getValue()));
         ChoiceBox<String> twelve = new ChoiceBox<>();
         twelve.getItems().addAll("0", "1", "X");
-        twelve.setOnAction(e -> fC.add(twelve));
+        twelve.getStyleClass().add("cb2");
+        twelve.setOnAction(e -> fC.set(11,twelve.getValue()));
         ChoiceBox<String> thirteen = new ChoiceBox<>();
         thirteen.getItems().addAll("0", "1", "X");
-        thirteen.setOnAction(e -> fC.add(thirteen));
+        thirteen.getStyleClass().add("cb");
+        thirteen.setOnAction(e -> fC.set(12,thirteen.getValue()));
         ChoiceBox<String> fourteen = new ChoiceBox<>();
         fourteen.getItems().addAll("0", "1", "X");
-        fourteen.setOnAction(e -> fC.add(fourteen));
+        fourteen.getStyleClass().add("cb2");
+        fourteen.setOnAction(e -> fC.set(13,fourteen.getValue()));
         ChoiceBox<String> fifteen = new ChoiceBox<>();
         fifteen.getItems().addAll("0", "1", "X");
-        fifteen.setOnAction(e -> fC.add(fifteen));
+        fifteen.getStyleClass().add("cb");
+        fifteen.setOnAction(e -> fC.set(14,fifteen.getValue()));
         ChoiceBox<String> sixteen = new ChoiceBox<>();
         sixteen.getItems().addAll("0", "1", "X");
-        sixteen.setOnAction(e -> fC.add(sixteen));
+        sixteen.getStyleClass().add("cb2");
+        sixteen.setOnAction(e -> fC.set(15,sixteen.getValue()));
         Button ttBe = new Button(">>");
         ttBe.getStyleClass().add("button");
 
+
         TextArea booleanA2 = new TextArea();
+        booleanA2.getStyleClass().add("BA");
         booleanA2.setMaxSize(400, 50);
-        booleanA2.getStyleClass().add("ttable");
         Button mainTurn2 = new Button("Main menu");
-        mainTurn2.setOnAction(e -> window.setScene(mainScene));
+
+        ttBe.setOnAction(e -> {
+            String[] temp = new String[fC.size()];
+            for (int i = 0; i < fC.size(); i++) {
+                temp[i] = fC.get(i);
+            }
+            booleanA2.setText("F = " + convert.ttTObe(temp));
+        });
+
+
+        group.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+            @Override
+            public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
+                if(group.getSelectedToggle() != null){
+                    if(group.getSelectedToggle()==rb1){
+                        len = 4;
+                        for (int i = 0; i < len; i++) {
+                            fC.add("X");
+                        }
+                        manuelTTable.setText("A B \n"
+                                + "0 0\n"
+                                + "0 1\n"
+                                + "1 0\n"
+                                + "1 1\n");
+                        manuelTTable.getStyleClass().add("ttable2");
+                        chooses.getChildren().addAll(fCol,one, two, three, four);
+                        chooses.setPadding(new Insets(320, 5, 100, 5));
+                        System.out.println("4");
+                    }
+                    else if(group.getSelectedToggle() == rb2){
+                        len = 8;
+                        for (int i = 0; i < len; i++) {
+                            fC.add("X");
+                        }
+                        manuelTTable.setText("A B C\n"
+                                + "0 0 0\n"
+                                + "0 0 1\n"
+                                + "0 1 0\n"
+                                + "0 1 1\n"
+                                + "1 0 0\n"
+                                + "1 0 1\n"
+                                + "1 1 0\n"
+                                + "1 1 1");
+                        manuelTTable.getStyleClass().add("ttable3");
+                        chooses.getChildren().addAll(fCol,one, two, three, four, five, six, seven, eight);
+                        chooses.setPadding(new Insets(280, 5, 100, 5));
+                        System.out.println("8");
+                    }
+                    else {
+                        len = 16;
+                        for (int i = 0; i < len; i++) {
+                            fC.add("X");
+                        }
+                        manuelTTable.setText(" A B C D\n"
+                                + " 0 0 0 0\n"
+                                + " 0 0 0 1\n"
+                                + " 0 0 1 0\n"
+                                + " 0 0 1 1\n"
+                                + " 0 1 0 0\n"
+                                + " 0 1 0 1\n"
+                                + " 0 1 1 0\n"
+                                + " 0 1 1 1\n"
+                                + " 1 0 0 0\n"
+                                + " 1 0 0 1\n"
+                                + " 1 0 1 0\n"
+                                + " 1 0 1 1\n"
+                                + " 1 1 0 0\n"
+                                + " 1 1 0 1\n"
+                                + " 1 1 1 0\n"
+                                + " 1 1 1 1");
+                        manuelTTable.getStyleClass().add("ttable4");
+                        chooses.getChildren().addAll(fCol,one, two, three, four, five, six, seven, eight,nine,ten,eleven,twelve,thirteen,fourteen,fifteen,sixteen);
+                        chooses.setPadding(new Insets(177, 5, 100, 5));
+                        System.out.println("16");
+                    }
+                }
+            }
+        });
+
+        TextArea simpleExManuelT = new TextArea();
+        simpleExManuelT.setMaxSize(400, 50);
+        simpleExManuelT.getStyleClass().add("BA");
+
+        Button simplifyManuelT = new Button("Simplify");
+        simplifyManuelT.getStyleClass().add("button");
+        VBox simpLayOutManuelT = new VBox();
+        simpLayOutManuelT.setAlignment(Pos.CENTER);
+        simpLayOutManuelT.getChildren().addAll(booleanA2, simplifyManuelT, simpleExManuelT);
+        simpLayOutManuelT.setSpacing(30);
+
+        simplifyManuelT.setOnAction(e -> {
+            if(ttBe.getText()==null){
+                String[] temp = new String[fC.size()];
+                for (int i = 0; i < fC.size(); i++) {
+                    temp[i] = fC.get(i);
+                }
+                booleanA2.setText("F = " + convert.ttTObe(temp));
+            }
+            System.out.println(fC);
+            BESimplification simplification = new BESimplification(booleanA2.getText().split("\\+"));
+
+            for (String sim : simplification.simplify()) {
+                simpleExManuelT.appendText((sim.endsWith(".") ? sim.subSequence(0, sim.length() - 2) : sim) + "+");
+                System.out.println(sim);
+            }
+        });
+
+        mainTurn2.setOnAction(e -> {
+            manuelTTable.clear();
+            manuelTTable.getStyleClass().clear();
+            booleanA2.clear();
+            chooses.getChildren().clear();
+            simpleExManuelT.clear();
+            window.setScene(mainScene);
+        });
         mainTurn2.getStyleClass().add("button");
 
-        VBox layout4 = new VBox();
-        layout4.getChildren().addAll(one, two, three, four, five, six, seven, eight);
-        layout4.setPadding(new Insets(260, 5, 100, 5));
         HBox layout3 = new HBox();
-        layout3.getChildren().addAll(ttable2, layout4, ttBe, booleanA2, mainTurn2);
+        layout3.getChildren().addAll(manuelTTable, chooses, ttBe, simpLayOutManuelT, mainTurn2);
         layout3.getStylesheets().add(css);
         layout3.getStyleClass().add("mainScene");
         layout3.setAlignment(Pos.CENTER);
@@ -390,7 +525,7 @@ public class Main extends Application {
         simplifyManuel.getStyleClass().add("button");
         simplifyManuel.setOnAction(e -> {
             try {
-                //BESimplification simplification = new BESimplification(convert.toSOP(booleanA3.getText())[0].split("\\+"));
+                BESimplification simplification = new BESimplification(convert.toSOP(booleanA3.getText())[0].split("\\+"));
             } catch (Exception ee) {
                 return;
             }

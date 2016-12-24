@@ -1,0 +1,156 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+.readButton{
+	   -fx-background-color:
+               linear-gradient(#ffd65b, #e68400),
+               linear-gradient(#ffef84, #f2ba44),
+               linear-gradient(#ffea6a, #efaa22),
+               linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),
+               linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));
+           -fx-background-radius: 30;
+           -fx-background-insets: 0,1,2,3,0;
+           -fx-text-fill: #654b00;
+           -fx-font-weight: bold;
+           -fx-font-size: 14px;
+           -fx-padding: 10 20 10 20;
+
+}
+.button{
+ -fx-background-color:
+               linear-gradient(#ffd65b, #e68400),
+               linear-gradient(#ffef84, #f2ba44),
+               linear-gradient(#ffea6a, #efaa22),
+               linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),
+               linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));
+     -fx-background-radius: 30;
+     -fx-background-insets: 0,1,2,3,0;
+     -fx-text-fill: #654b00;
+     -fx-font-weight: bold;
+     -fx-font-size: 14px;
+}
+
+.manuelButton{
+	   -fx-background-color:
+               linear-gradient(#ffd65b, #e68400),
+               linear-gradient(#ffef84, #f2ba44),
+               linear-gradient(#ffea6a, #efaa22),
+               linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),
+               linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));
+           -fx-background-radius: 30;
+           -fx-background-insets: 0,1,2,3,0;
+           -fx-text-fill: #654b00;
+           -fx-font-weight: bold;
+           -fx-font-size: 14px;
+           -fx-padding: 10 20 10 20;
+}
+.mainScene {
+     -fx-background-color:
+            #a6b5c9,
+            linear-gradient(#303842 0%, #3e5577 20%, #375074 100%),
+            linear-gradient(#768aa5 0%, #849cbb 5%, #5877a2 50%, #486a9a 51%, #4a6c9b 100%);
+        -fx-background-insets: 0 0 -1 0,0,1;
+        -fx-background-radius: 5,5,4;
+        -fx-padding: 10 50 10 50;
+        -fx-text-fill: #242d35;
+        -fx-font-family: "Helvetica";
+        -fx-font-size: 12px;
+        -fx-text-fill: white;
+}
+
+.readScene{
+     -fx-background-color:
+            #a6b5c9,
+            linear-gradient(#303842 0%, #3e5577 20%, #375074 100%),
+            linear-gradient(#768aa5 0%, #849cbb 5%, #5877a2 50%, #486a9a 51%, #4a6c9b 100%);
+        -fx-background-insets: 0 0 -1 0,0,1;
+        -fx-background-radius: 5,5,4;
+        -fx-padding: 7 30 7 30;
+        -fx-text-fill: #242d35;
+        -fx-font-family: "Helvetica";
+        -fx-font-size: 12px;
+        -fx-text-fill: white;
+
+}
+
+.ttable3 {
+            -fx-font-family: Consolas;
+            -fx-font-size: 18;
+            -fx-text-fill: #ffffff;
+            -fx-display-caret:true;
+              -fx-min-width: 80;
+              -fx-max-width:80;
+                -fx-min-height: 260;
+                -fx-max-height:260;
+
+        }
+
+ .ttable3 .content {
+            -fx-background-color: #000000;
+        }
+
+.ttable2{
+ -fx-font-family: Consolas;
+            -fx-font-size: 18;
+            -fx-text-fill: #ffffff;
+            -fx-display-caret:true;
+              -fx-min-width: 65;
+              -fx-max-width:65;
+                -fx-min-height: 160;
+                -fx-max-height:160;
+
+
+}
+.ttable2 .content {
+            -fx-background-color: #000000;
+        }
+
+
+
+.ttable4{
+ -fx-font-family: Consolas;
+            -fx-font-size: 18;
+            -fx-text-fill: #ffffff;
+            -fx-display-caret:true;
+              -fx-min-width: 105;
+              -fx-max-width:105;
+                -fx-min-height: 450;
+                -fx-max-height:450;
+
+}
+
+.ttable4 .content {
+            -fx-background-color: #000000;
+        }
+
+
+  .BA{
+    -fx-font-family: Consolas;
+                -fx-font-size: 15;
+                -fx-text-fill: #ffffff;
+                -fx-display-caret:true;
+  }
+.BA .content{
+     -fx-background-color: #000000;
+}
+.cb .menu-item:focused{
+        -fx-background-color:red;
+}
+.cb .context-menu{
+        -fx-background-color: white;
+}
+.cb {
+    -fx-mark-color:green;
+    -fx-background-color:darkolivegreen;
+    -fx-text-fill: #ffffff
+}
+.cb2 .menu-item:focused{
+        -fx-background-color:red;
+}
+.cb2 .context-menu{
+        -fx-background-color: white;
+}
+.cb2 {
+    -fx-mark-color:green;
+    -fx-background-color:maroon;
+    -fx-text-fill: #ffffff
+}
