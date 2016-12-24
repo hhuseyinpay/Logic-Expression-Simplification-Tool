@@ -1,20 +1,12 @@
 package sample;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-
-import java.util.LinkedList;
-
 public class Main2 {
 
 
     public static void main(String[] args) {
 //        String [] expression = {"A.B.C", "A'.B'.C'", "A'.B.C", "A'.B.C'"};
 //
-//        BESimplification simplification = new BESimplification(expression);
+//        BooleanExpression simplification = new BooleanExpression(expression);
 //
 //       // System.out.println(simplification.simplify());
 //        printTruthTable(4);
@@ -52,7 +44,7 @@ public class Main2 {
         String[] a2 = {"A'.B'", "A'.B","A.B'"};
 
 
-        KMSimplification km = new KMSimplification();
+        KarnaughMap km = new KarnaughMap();
         Converter converter = new Converter();
 
         System.out.println(km.simplify(converter.beTOkm(a2)));

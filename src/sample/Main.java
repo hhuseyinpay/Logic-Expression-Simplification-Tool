@@ -7,7 +7,6 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
@@ -214,7 +213,7 @@ public class Main extends Application {
         });
         simplify.setOnAction(e -> {
 
-            BESimplification simplification = new BESimplification(isBE ? read[0].split("\\+") : convert.ttTObe(read).split("\\+"));
+            BooleanExpression simplification = new BooleanExpression(isBE ? read[0].split("\\+") : convert.ttTObe(read).split("\\+"));
             isBE=false;
 
             for (String sim : simplification.simplify()) {
@@ -468,7 +467,7 @@ public class Main extends Application {
                 booleanA2.setText("F = " + convert.ttTObe(temp));
             }
             System.out.println(fC);
-            BESimplification simplification = new BESimplification(booleanA2.getText().split("\\+"));
+            BooleanExpression simplification = new BooleanExpression(booleanA2.getText().split("\\+"));
 
             for (String sim : simplification.simplify()) {
                 simpleExManuelT.appendText((sim.endsWith(".") ? sim.subSequence(0, sim.length() - 2) : sim) + "+");
@@ -525,7 +524,7 @@ public class Main extends Application {
         simplifyManuel.getStyleClass().add("button");
         simplifyManuel.setOnAction(e -> {
             try {
-                BESimplification simplification = new BESimplification(convert.toSOP(booleanA3.getText())[0].split("\\+"));
+                BooleanExpression simplification = new BooleanExpression(convert.toSOP(booleanA3.getText())[0].split("\\+"));
             } catch (Exception ee) {
                 return;
             }

@@ -174,6 +174,32 @@ public class Converter {
         return F;
     }
 
+    public BENode[] beTObaNode (String[] expression) {
+
+        BENode[] BENode = new BENode[expression.length];
+        int len = expression.length;
+        for (int i = 0; i < len; i++) {
+            String[] splited = expression[i].split("\\.");
+            switch (splited.length) {
+                case 2:
+                    BENode[i] = new BENode(splited[0].length() == 1 ? 1 : 0, splited[1].length() == 1 ? 1 : 0);
+                    break;
+                case 3:
+                    BENode[i] = new BENode(splited[0].length() == 1 ? 1 : 0, splited[1].length() == 1 ? 1 : 0,
+                            splited[2].length() == 1 ? 1 : 0);
+                    break;
+                case 4:
+                    BENode[i] = new BENode(splited[0].length() == 1 ? 1 : 0, splited[1].length() == 1 ? 1 : 0,
+                            splited[2].length() == 1 ? 1 : 0, splited[3].length() == 1 ? 1 : 0);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        return BENode;
+    }
+
 
     // this function has been written by Tolga Atış.
     public String[] toSOP(String Control) {
