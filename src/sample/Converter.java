@@ -104,12 +104,12 @@ public class Converter {
 
 
     public String[] beTOtt(String be) {
-        int count;
+        int count = 0;
         if (be.contains("D")) {
             count = 4;
         } else if (be.contains("C")) {
             count = 3;
-        } else {
+        } else if (be.contains("B")){
             count = 2;
         }
 
