@@ -71,8 +71,51 @@
         -fx-text-fill: white;
 
 }
+.ftable2{
+                    -fx-font-family: Consolas;
+                     -fx-font-size: 18;
+                     -fx-text-fill: #ffffff;
+                     -fx-display-caret:true;
+                         -fx-min-height: 160;
+                                     -fx-max-height:160;
+             -fx-min-width: 40;
+              -fx-max-width:40;
+}
+.ftable3{
+                       -fx-font-family: Consolas;
+                     -fx-font-size: 18;
+                     -fx-text-fill: #ffffff;
+                     -fx-display-caret:true;
+                       -fx-min-height: 260;
+                        -fx-max-height:260;
+                          -fx-min-width: 40;
+                                      -fx-max-width:40;
+}
+.ftable4{
+                       -fx-font-family: Consolas;
+                     -fx-font-size: 18;
+                     -fx-text-fill: #ffffff;
+                     -fx-display-caret:true;
+                      -fx-min-height: 450;
+                       -fx-max-height:450;
+                         -fx-min-width: 40;
+                                     -fx-max-width:40;
 
+}
+ .ftable3 .content {
+
+            -fx-background-color: #000000;
+        }
+        .ftable2 .content {
+
+                    -fx-background-color: #000000;
+                }
+                .ftable4 .content {
+
+                            -fx-background-color: #000000;
+                        }
 .ttable3 {
+
             -fx-font-family: Consolas;
             -fx-font-size: 18;
             -fx-text-fill: #ffffff;
@@ -85,6 +128,7 @@
         }
 
  .ttable3 .content {
+
             -fx-background-color: #000000;
         }
 
@@ -153,4 +197,44 @@
     -fx-mark-color:green;
     -fx-background-color:maroon;
     -fx-text-fill: #ffffff
+}
+.KMap2{
+   -fx-font-family: Consolas;
+   -fx-font-size: 20;
+   -fx-text-fill: #ffffff;
+   -fx-display-caret:true;
+   -fx-min-width: 150;
+   -fx-max-width:150;
+   -fx-min-height: 100;
+   -fx-max-height:100;
+
+}
+.KMap2 .content{
+    -fx-background-color: #000000;
+}
+.KMap3{
+   -fx-font-family: Consolas;
+   -fx-font-size: 20;
+   -fx-text-fill: #ffffff;
+   -fx-display-caret:true;
+   -fx-min-width: 150;
+   -fx-max-width:150;
+   -fx-min-height: 200;
+   -fx-max-height: 200;
+}
+.KMap3 .content{
+    -fx-background-color: #000000;
+}
+.KMap4{
+   -fx-font-family: Consolas;
+   -fx-font-size: 18;
+   -fx-text-fill: #ffffff;
+   -fx-display-caret:true;
+   -fx-min-width: 250;
+   -fx-max-width:250;
+   -fx-min-height: 250;
+   -fx-max-height:250;
+}
+.KMap4 .content{
+    -fx-background-color: #000000;
 }
