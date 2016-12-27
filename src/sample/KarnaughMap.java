@@ -7,101 +7,6 @@ import java.util.LinkedList;
  */
 public class KarnaughMap {
 
-    private int add(int n1, int n2, int size) {
-
-        return (n1 + n2 < 0 ? size : ((n1 + n2) >= size) ? (n1 + n2 - size) : (n1 + n2));
-    }
-
-    private boolean v8Checker(KMNode[][] kMap, int j) {
-        for (int under = 0; under < 4; under++) {//bi altına bakma durumu
-            for (int k = 0; k < 2; k++) {
-                if (kMap[under][add(j, k, 4)].equal("0"))
-                    return false;
-            }
-        }
-        for (int under = 0; under < 4; under++) {//bi altına bakma durumu
-            for (int k = 0; k < 2; k++) {
-                kMap[under][add(j, k, 4)].setFlag(true);
-            }
-        }
-        return true;
-    }
-
-    private boolean h8Checker(KMNode[][] kMap, int i) {
-        for (int k = 0; k < 2; k++) {
-            for (int side = 0; side < 4; side++) {
-                if (kMap[add(k, i, 4)][side].equal("0"))
-                    return false;
-            }
-        }
-
-        for (int k = 0; k < 2; k++) {
-            for (int side = 0; side < 4; side++) {
-                kMap[add(k, i, 4)][side].setFlag(true);
-            }
-        }
-        return true;
-    }
-
-    private boolean s4Checker(KMNode[][] kMap, int i, int j) {
-        try {
-            for (int k = 0; k < 2; k++) {
-                for (int l = 0; l < 2; l++) {
-                    if (kMap[add(i, k, 4)][add(j, l, 4)].equal("0"))
-                        return false;
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("a");
-        }
-        for (int k = 0; k < 2; k++) {
-            for (int l = 0; l < 2; l++) {
-                kMap[add(i, k, 4)][add(j, l, 4)].setFlag(true);
-            }
-        }
-        return true;
-    }
-
-    private boolean h4Checker(KMNode[][] kMap, int i) {
-        for (int k = 0; k < 4; k++) {
-            if (kMap[i][k].equal("0"))
-                return false;
-        }
-
-        for (int k = 0; k < 4; k++)
-            kMap[i][k].setFlag(true);
-
-        return true;
-    }
-
-    private boolean v4Checker(KMNode[][] kMap, int j) {
-        for (int k = 0; k < 4; k++) {
-            if (kMap[k][j].equal("0"))
-                return false;
-        }
-
-        for (int k = 0; k < 4; k++)
-            kMap[k][j].setFlag(true);
-
-        return true;
-    }
-
-    private boolean v2Checker(KMNode[][] kMap, int i, int j, int size) {
-        if (kMap[i][j].equal("0") || kMap[add(i, 1, size)][j].equal("0"))
-            return false;
-        kMap[i][j].setFlag(true);
-        kMap[add(i, 1, size)][j].setFlag(true);
-        return true;
-    }
-
-    private boolean h2Checker(KMNode[][] kMap, int i, int j, int size) {
-        if (kMap[i][j].equal("0") || kMap[i][add(j, 1, size)].equal("0"))
-            return false;
-        kMap[i][j].setFlag(true);
-        kMap[i][add(j, 1, size)].setFlag(true);
-        return true;
-    }
-
 
     public LinkedList<String> simplify(KMNode[][] kMap) {// dont carelı için, converter içine fonksiyon yazılacak.
         LinkedList<String> simplifiedExpression = new LinkedList<>();
@@ -269,6 +174,7 @@ public class KarnaughMap {
                         flag = false;
                 }
             }
+
             if (flag)//4 tane bir varsa geriye null döner.
                 return null;
 
@@ -282,18 +188,114 @@ public class KarnaughMap {
 
             for (int i = 0; i < 2; i++) {
                 for (int j = 0; j < 2; j++) {
-                    if (kMap[i][j].equal("1") && !kMap[i][j].isFlag()){
-                        simplifiedExpression.add((i == 0 ? (j == 0 ? "A'.B'" : "A'.B"): (j == 0 ? "A.B'" : "A.B")));
+                    if (kMap[i][j].equal("1") && !kMap[i][j].isFlag()) {
+                        simplifiedExpression.add((i == 0 ? (j == 0 ? "A'.B'" : "A'.B") : (j == 0 ? "A.B'" : "A.B")));
                     }
 
                 }
             }
-
-
         }
 
-
         return simplifiedExpression;
+    }
+
+    private int add(int n1, int n2, int size) {
+        return (n1 + n2 < 0 ? size : ((n1 + n2) >= size) ? (n1 + n2 - size) : (n1 + n2));
+    }
+
+    private boolean v8Checker(KMNode[][] kMap, int j) {
+        for (int under = 0; under < 4; under++) {//bi altına bakma durumu
+            for (int k = 0; k < 2; k++) {
+                if (kMap[under][add(j, k, 4)].equal("0"))
+                    return false;
+            }
+        }
+
+        for (int under = 0; under < 4; under++) {//bi altına bakma durumu
+            for (int k = 0; k < 2; k++) {
+                kMap[under][add(j, k, 4)].setFlag(true);
+            }
+        }
+
+        return true;
+    }
+
+    private boolean h8Checker(KMNode[][] kMap, int i) {
+        for (int k = 0; k < 2; k++) {
+            for (int side = 0; side < 4; side++) {
+                if (kMap[add(k, i, 4)][side].equal("0"))
+                    return false;
+            }
+        }
+
+        for (int k = 0; k < 2; k++) {
+            for (int side = 0; side < 4; side++) {
+                kMap[add(k, i, 4)][side].setFlag(true);
+            }
+        }
+
+        return true;
+    }
+
+    private boolean s4Checker(KMNode[][] kMap, int i, int j) {
+        for (int k = 0; k < 2; k++) {
+            for (int l = 0; l < 2; l++) {
+                if (kMap[add(i, k, 4)][add(j, l, 4)].equal("0"))
+                    return false;
+            }
+        }
+
+        for (int k = 0; k < 2; k++) {
+            for (int l = 0; l < 2; l++) {
+                kMap[add(i, k, 4)][add(j, l, 4)].setFlag(true);
+            }
+        }
+
+        return true;
+    }
+
+    private boolean h4Checker(KMNode[][] kMap, int i) {
+        for (int k = 0; k < 4; k++) {
+            if (kMap[i][k].equal("0"))
+                return false;
+        }
+
+        for (int k = 0; k < 4; k++)
+            kMap[i][k].setFlag(true);
+
+        return true;
+    }
+
+    private boolean v4Checker(KMNode[][] kMap, int j) {
+        for (int k = 0; k < 4; k++) {
+            if (kMap[k][j].equal("0"))
+                return false;
+        }
+
+        for (int k = 0; k < 4; k++)
+            kMap[k][j].setFlag(true);
+
+        return true;
+    }
+
+    private boolean v2Checker(KMNode[][] kMap, int i, int j, int size) {
+        if (kMap[i][j].equal("0") || kMap[add(i, 1, size)][j].equal("0"))
+            return false;
+
+        kMap[i][j].setFlag(true);
+        kMap[add(i, 1, size)][j].setFlag(true);
+
+        return true;
+    }
+
+    private boolean h2Checker(KMNode[][] kMap, int i, int j, int size) {
+        if (kMap[i][j].equal("0") || kMap[i][add(j, 1, size)].equal("0"))
+            return false;
+
+        kMap[i][j].setFlag(true);
+        kMap[i][add(j, 1, size)].setFlag(true);
+
+        return true;
     }
 
 

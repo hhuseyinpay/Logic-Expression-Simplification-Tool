@@ -10,8 +10,8 @@ public class Converter {
         try {
             StringBuilder stringBuilder = new StringBuilder();
             String temp = "";
-            int len = (int) (Math.log((double) tt.length) / Math.log(2));
 
+            int len = (int) (Math.log((double) tt.length) / Math.log(2));
             int rows = (int) Math.pow(2, len);
 
             for (int i = 0; i < rows; i++) {
@@ -50,7 +50,9 @@ public class Converter {
     }
 
     public KMNode[][] beTOkm(String[] function) {
+
         KMNode[][] kMap;
+
         if (function[0].contains("D"))
             kMap = new KMNode[4][4];
         else if (function[0].contains("C"))
@@ -97,23 +99,18 @@ public class Converter {
             }
             System.out.println("");
         }
-
         return kMap;
-
     }
 
 
     public String[] beTOtt(String be) {
-        int count = 0;
-
-        if (be.contains("B")) {
-            count = 2;
-        }
-        if (be.contains("C")) {
-            count = 3;
-        }
+        int count;
         if (be.contains("D")) {
             count = 4;
+        } else if (be.contains("C")) {
+            count = 3;
+        } else {
+            count = 2;
         }
 
         String[] temp = be.split("\\+");
@@ -134,8 +131,6 @@ public class Converter {
                     F[i] = "0";
                 }
                 for (int i = 0; i < temp.length; i++) {
-
-
                     if (F[0].equals("0")) F[0] = temp[i].equals("A'.B'.C'") ? "1" : "0";
                     if (F[1].equals("0")) F[1] = temp[i].equals("A'.B'.C") ? "1" : "0";
                     if (F[2].equals("0")) F[2] = temp[i].equals("A'.B.C'") ? "1" : "0";
@@ -174,7 +169,7 @@ public class Converter {
         return F;
     }
 
-    public BENode[] beTObaNode (String[] expression) {
+    public BENode[] beTObaNode(String[] expression) {
 
         BENode[] BENode = new BENode[expression.length];
         int len = expression.length;
@@ -196,7 +191,6 @@ public class Converter {
                     break;
             }
         }
-
         return BENode;
     }
 

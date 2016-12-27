@@ -10,30 +10,12 @@ public class FileOperation {
 
 
     public String[] read(String path) {
-//        File folder = new File(path);
-//        File[] listOfFiles = folder.listFiles();
-//        if (listOfFiles == null) {
-//            System.out.println("file not found");
-//            return null;
-//        }
-//        for (int i = 0; i < listOfFiles.length; i++) {
-//            if (listOfFiles[i].isFile() && listOfFiles[i].getName().endsWith(".be")) {
-//                return functionRead(path + listOfFiles[i].getName());
-//            } else if (listOfFiles[i].isFile() && listOfFiles[i].getName().endsWith(".tt")) {
-//                return tableRead(path + listOfFiles[i].getName());
-//            }
-//        }
-//        return null;
 
         if (path.endsWith(".be")) {
             return functionRead(path);
         } else if (path.endsWith(".tt")) {
             return tableRead(path);
         } else return null;
-
-
-
-
     }
 
     private String[] tableRead(String path) {
@@ -50,7 +32,6 @@ public class FileOperation {
             }
 
             int len = line.length();
-            int[] table = new int[len];
             try {
                 switch (len) {
                     case 5:
@@ -129,10 +110,7 @@ public class FileOperation {
     // this function has been written by Tolga Atış.
     public String[] functionRead(String path) {
 
-
-
         String Control="";
-           // BufferedReader br = null;
 
         try {
             InputStream fis = new FileInputStream(path);
@@ -142,10 +120,6 @@ public class FileOperation {
                 br.close();
                 return null;
             }
-          //  Control = br.readLine();
-          /*	while ((sCurrentLine = br.readLine()) != null) {
-                  System.out.println(sCurrentLine);
-  			}*/
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Error: FileOperation > functionRead()");

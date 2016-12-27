@@ -13,6 +13,7 @@ public class KMNode {
         this.key = key;
         flag = false;
     }
+
     public boolean isFlag() {
         return flag;
     }
@@ -21,12 +22,9 @@ public class KMNode {
         this.flag = flag;
     }
 
-
     public String getKey() {
         return key;
     }
-
-
 
     public boolean equal(String s) {
         return key.equals(s);

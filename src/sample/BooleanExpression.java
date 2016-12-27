@@ -23,14 +23,14 @@ public class BooleanExpression {
         }
     }
 
-
     public LinkedList<String> simplify(BENode[] BENode) {
         sort(BENode); // sıralama
-        LinkedList<String> simplifiedExpression = new LinkedList<>();
+
+        int count;
         int lenI = BENode.length;
         BENode[] temp = new BENode[lenI];
-        int count;
-        // 1. tur kontrol
+        LinkedList<String> simplifiedExpression = new LinkedList<>();
+
         do {
             count = 0;
             for (int i = 0; i < lenI - 1; i++) { // node dizisini dönmek için
@@ -65,19 +65,16 @@ public class BooleanExpression {
                     BENode[i] = temp[i];
                     temp[i] = null;
                 }
-
-
         } while (count > 0);
 
         for (int i = 0; i < lenI; i++) {
             if (BENode[i] != null) {
                 simplifiedExpression.add((BENode[i].getA() == 0 ? "A'." : (BENode[i].getA() == 1 ? "A." : ""))
-                        +  (BENode[i].getB() == 0 ? "B'." : (BENode[i].getB() == 1 ? "B." : ""))
-                        +  (BENode[i].getC() == 0 ? "C'." : (BENode[i].getC() == 1 ? "C." : ""))
+                        + (BENode[i].getB() == 0 ? "B'." : (BENode[i].getB() == 1 ? "B." : ""))
+                        + (BENode[i].getC() == 0 ? "C'." : (BENode[i].getC() == 1 ? "C." : ""))
                         + (BENode[i].getD() == 0 ? "D'." : (BENode[i].getD() == 1 ? "D." : "")) + " ");
             }
         }
-
         return simplifiedExpression;
     }
 

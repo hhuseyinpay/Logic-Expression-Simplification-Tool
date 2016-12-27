@@ -55,40 +55,32 @@ public class BENode {
         if (A != 2) {
             sum -= A;
             A = 2;
-        } else {
+        } else
             System.out.println("2. removeA!");
-            return;
-        }
     }
 
     public void removeB() {
         if (B != 2) {
             sum -= B;
             B = 2;
-        } else {
+        } else
             System.out.println("2. removeB!");
-            return;
-        }
     }
 
     public void removeC() {
         if (C != 2) {
             sum -= C;
             C = 2;
-        } else {
+        } else
             System.out.println("2. removeC!");
-            return;
-        }
     }
 
     public void removeD() {
         if (D != 2) {
             sum -= D;
             D = 2;
-        } else {
+        } else
             System.out.println("2. removeD!");
-            return;
-        }
     }
 
     public int getSum() {
