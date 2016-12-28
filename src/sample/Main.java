@@ -233,6 +233,9 @@ public class Main extends Application {
                 simpleEx.appendText((sim.endsWith(".") ? sim.subSequence(0, sim.length() - 2) : sim) + "+");
                 System.out.println(sim);
             }
+            simpleEx.deletePreviousChar();
+            simpleEx.deletePreviousChar();
+
             isBE = false;
         });
         map.setOnAction(e->{
@@ -427,6 +430,7 @@ public class Main extends Application {
         simpLayOutManuelT.setSpacing(30);
 
         simplifyManuelT.setOnAction(e -> {
+            simpleExManuelT.clear();
             if (ttBe.getText() == null) {
                 String[] temp = new String[fC.size()];
                 for (int i = 0; i < fC.size(); i++) {
@@ -504,6 +508,7 @@ public class Main extends Application {
         mainTurn.getStyleClass().add("button");
 
         beTt.setOnAction(e -> {
+            fColumnBA.clear();
             int len = convert.beTOtt(booleanABA.getText()).length;
             System.out.println(booleanABA.getText());
             String[] temp = convert.beTOtt(booleanABA.getText());
@@ -626,7 +631,9 @@ public class Main extends Application {
                 }
             }
         });
+
         simplifyManuel.setOnAction(e -> {
+            simpleExManuelBA.clear();
             if (booleanABA.getText() != null) {
                 booleanEx= convert.toSOP(booleanABA.getText());
                 if (booleanEx[0].contains("D")) len = 16;
@@ -637,15 +644,6 @@ public class Main extends Application {
                 simpleExManuelBA.appendText((sim.endsWith(".") ? sim.subSequence(0, sim.length() - 2) : sim) + "+");
                 System.out.println(sim);
             }
-//            try {
-//                BESimplification simplification = new BESimplification(convert.toSOP(booleanA3.getText())[0].split("\\+"));
-//            } catch (Exception ee) {
-//                return;
-//            }
-//            for (String sim : simplification.simplify()) {
-//                simpleExManuel.appendText((sim.endsWith(".") ? sim.subSequence(0, sim.length() - 2) : sim) + "+");
-//                System.out.println(sim);
-//            }
         });
 
         mainTurnTT.setOnAction(e -> {
@@ -795,7 +793,7 @@ public class Main extends Application {
             map.getChildren().addAll(B,firstLine,secondLine,thirdLine,fourthLine);
         }
         else if(len==16){
-            B.setText("CD:00      01      11      10");
+            B.setText("CD:00     01     11     10");
             A.setText("AB:\n00\n01\n11\n10");
             A.setMaxHeight(300);
             A.setLineSpacing(9);
@@ -824,20 +822,24 @@ public class Main extends Application {
             for (int i = 0; i < len; i++) {
                 temp[i]=karMap.get(i);
             }
-            LinkedList<String> simplify = karnaughMap.simplify(convert.beTOkm(convert.ttTObe(temp).split("\\+")));
-
-            for (int i = 0; i < simplify.size() ; i++) {
-                simpEx.appendText(simplify.get(i));
-                if(i!=simplify.size()-1)
-                    simpEx.appendText("+");
+            LinkedList<String> simplify=new LinkedList<String>();
+            if(convert.beTOkm(convert.ttTObe(temp).split("\\+"))!=null) {
+                simplify = karnaughMap.simplify(convert.beTOkm(convert.ttTObe(temp).split("\\+")));
+                simpEx.clear();
+                if(simplify!=null) {
+                    for (int i = 0; i < simplify.size(); i++) {
+                        simpEx.appendText(simplify.get(i));
+                        if (i != simplify.size() - 1)
+                            simpEx.appendText("+");
+                    }
+                }
             }
-
         });
         Button mainTurnKM = new Button("Main Menu");
         mainTurnKM.getStyleClass().add("button");
         mainTurnKM.setOnAction(e->{
             simpEx.clear();
-            karMap=null;
+            karMap.clear();
             window.setScene(mainScene);
         });
         HBox KMapEnd = new HBox();
@@ -852,35 +854,37 @@ public class Main extends Application {
     private Scene karnaughMapScene(int len, KMNode[][] karnaugh, LinkedList<String> simplify) {
         TextArea KMap = new TextArea();
         KMap.setEditable(false);
-        if(len == 4){
-            KMap.appendText("   B'  B\n"
-                                +"A' "+ karnaugh[0][0].getKey()+"   "+ karnaugh[0][1].getKey() +"\n"
-                                +"A  "+ karnaugh[1][0].getKey()+"   "+ karnaugh[1][1].getKey());
-            KMap.getStyleClass().add("KMap2");
-        }
-        else if (len == 8){
-            KMap.appendText("A B/C: 0  1\n"
-                    +"***********\n"
-                    +"0 0   |"+ karnaugh[0][0].getKey()+"  "+ karnaugh[0][1].getKey() +"\n"
-                    +"0 1   |"+ karnaugh[1][0].getKey()+"  "+ karnaugh[1][1].getKey() +"\n"
-                    +"1 1   |"+ karnaugh[2][0].getKey()+"  "+ karnaugh[2][1].getKey() +"\n"
-                    +"1 0   |"+ karnaugh[3][0].getKey()+"  "+ karnaugh[3][1].getKey());
-            KMap.getStyleClass().add("KMap3");
-        }
-        else if (len == 16){
-            KMap.appendText("A B/C D: 00  01  11  10\n"
-                    +"***********\n"
-                    +"0 0   |"+ karnaugh[0][0].getKey()+"  "+ karnaugh[0][1].getKey() + karnaugh[0][2].getKey()+"  "+ karnaugh[0][3].getKey() +"\n"
-                    +"0 1   |"+ karnaugh[1][0].getKey()+"  "+ karnaugh[1][1].getKey() + karnaugh[1][2].getKey()+"  "+ karnaugh[1][3].getKey() +"\n"
-                    +"1 1   |"+ karnaugh[2][0].getKey()+"  "+ karnaugh[2][1].getKey() + karnaugh[2][2].getKey()+"  "+ karnaugh[2][3].getKey() +"\n"
-                    +"1 0   |"+ karnaugh[3][0].getKey()+"  "+ karnaugh[3][1].getKey() + karnaugh[3][2].getKey()+"  "+ karnaugh[3][3].getKey());
-            KMap.getStyleClass().add("KMap4");
+        if (karnaugh != null) {
+            if (len == 4) {
+                KMap.appendText("   B'  B\n"
+                        + "A' " + karnaugh[0][0].getKey() + "   " + karnaugh[0][1].getKey() + "\n"
+                        + "A  " + karnaugh[1][0].getKey() + "   " + karnaugh[1][1].getKey());
+                KMap.getStyleClass().add("KMap2");
+            } else if (len == 8) {
+                KMap.appendText("A B/C: 0  1\n"
+                        + "***********\n"
+                        + "0 0   |" + karnaugh[0][0].getKey() + "  " + karnaugh[0][1].getKey() + "\n"
+                        + "0 1   |" + karnaugh[1][0].getKey() + "  " + karnaugh[1][1].getKey() + "\n"
+                        + "1 1   |" + karnaugh[2][0].getKey() + "  " + karnaugh[2][1].getKey() + "\n"
+                        + "1 0   |" + karnaugh[3][0].getKey() + "  " + karnaugh[3][1].getKey());
+                KMap.getStyleClass().add("KMap3");
+            } else if (len == 16) {
+                KMap.appendText("A B/C D: 00  01  11  10\n"
+                        + "***********\n"
+                        + "0 0   |" + karnaugh[0][0].getKey() + "  " + karnaugh[0][1].getKey() + karnaugh[0][2].getKey() + "  " + karnaugh[0][3].getKey() + "\n"
+                        + "0 1   |" + karnaugh[1][0].getKey() + "  " + karnaugh[1][1].getKey() + karnaugh[1][2].getKey() + "  " + karnaugh[1][3].getKey() + "\n"
+                        + "1 1   |" + karnaugh[2][0].getKey() + "  " + karnaugh[2][1].getKey() + karnaugh[2][2].getKey() + "  " + karnaugh[2][3].getKey() + "\n"
+                        + "1 0   |" + karnaugh[3][0].getKey() + "  " + karnaugh[3][1].getKey() + karnaugh[3][2].getKey() + "  " + karnaugh[3][3].getKey());
+                KMap.getStyleClass().add("KMap4");
+            }
         }
         TextArea simpKmap = new TextArea();
-        for (int i = 0; i < simplify.size(); i++) {
-            simpKmap.appendText(simplify.get(i));
-            if(i!=simplify.size()-1)
-                simpKmap.appendText(" + ");
+        if (simplify != null) {
+            for (int i = 0; i < simplify.size(); i++) {
+                simpKmap.appendText(simplify.get(i));
+                if (i != simplify.size() - 1)
+                    simpKmap.appendText(" + ");
+            }
         }
         simpKmap.setMaxSize(400, 50);
         simpKmap.setEditable(false);
@@ -891,6 +895,7 @@ public class Main extends Application {
             simpKmap.getStyleClass().clear();
             KMap.clear();
             KMap.getStyleClass().clear();
+            KMap.clear();
             window.setScene(mainScene);
         });
         HBox KmapLay = new HBox();
