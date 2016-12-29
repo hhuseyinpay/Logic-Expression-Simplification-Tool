@@ -557,7 +557,7 @@ public class Main extends Application {
                     } else if (group.getSelectedToggle() == rb2) {
                         len = 8;
                         for (int i = 0; i < len; i++) {
-                            fC.add("X");
+                            fC.add("0");
                         }
                         ttableBA.setText("A B C\n"
                                 + "0 0 0\n"
@@ -586,7 +586,7 @@ public class Main extends Application {
                     } else {
                         len = 16;
                         for (int i = 0; i < len; i++) {
-                            fC.add("X");
+                            fC.add("0");
                         }
                         ttableBA.setText(" A B C D\n"
                                 + " 0 0 0 0\n"
@@ -630,6 +630,9 @@ public class Main extends Application {
                         System.out.println("16");
                     }
 
+                }
+                else{
+                    window.setScene(manuelScene);
                 }
             }
         });
