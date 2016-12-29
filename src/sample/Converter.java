@@ -231,170 +231,201 @@ public class Converter {
         if (count == 1) {
             for (int i = 0; i < kelime2.length; i++) {
 
-                standart += (kelime2[i] + "+");           // TEK ELEMANLILARI AYNEN YAZ EM FAZLA TEK ELEMAN VARSA
+                standart+=(kelime2[i] + "+");           // TEK ELEMANLILARI AYNEN YAZ EM FAZLA TEK ELEMAN VARSA
             }
-        } else if (count == 2) {
+        }
+
+        else
+        if (count ==2) {
             for (int i = 0; i < kelime2.length; i++) {
 
-                if (kelime2[i].equals("A")) {
-                    standart += ("A.B+");
-                    standart += ("A.B'+");
+                if (kelime2[i].equals("A") ) {
+                    standart+=("A.B+A.B'");
+                }
+                else if (kelime2[i].equals("A'") ) {
+                    standart+=("A'.B+A'.B'");                // 2 ELEMANLI INPUTLARDA TEK ELEMANLARI 2 ELEMANLI STANDART HALE GETIR
+                }
+                else if (kelime2[i].equals("B") ) {
+                    standart+=("A.B+A'.B");
+                }
+                else if (kelime2[i].equals("B'") ) {
+                    standart+=("A.B'+A'.B'");
+                }
+                else if (kelime2[i].equals("A.B") ) {
+                    standart+=("A.B");
 
-                } else if (kelime2[i].equals("A'")) {
-                    standart += ("A'.B+");                // 2 ELEMANLI INPUTLARDA TEK ELEMANLARI 2 ELEMANLI STANDART HALE GETIR
-                    standart += ("A'.B'+");
+                }
+                else if (kelime2[i].equals("A.B'") ) {
+                    standart+=("A.B'");
 
-                } else if (kelime2[i].equals("B")) {
-                    standart += ("A.B+");
-                    standart += ("A.'B+");
+                }
+                else if (kelime2[i].equals("A'.B") ) {
+                    standart+=("A'.B");
 
-                } else if (kelime2[i].equals("B'")) {
-                    standart += ("A.B'+");
-                    standart += ("A'B'+");
-
-                } else if (kelime2[i].equals("A.B")) {
-                    standart += ("A.B+");
-
-                } else if (kelime2[i].equals("A.B'")) {
-                    standart += ("A.B'+");
-
-                } else if (kelime2[i].equals("A'.B")) {
-                    standart += ("A'.B+");
-
-                } else if (kelime2[i].equals("A'.B'")) {
-                    standart += ("A'.B'+");
+                }
+                else if (kelime2[i].equals("A'.B'") ) {
+                    standart+=("A'.B'");
 
                 }
             }
 
-        } else if (count == 3) {
+        }
+
+
+        else
+        if (count ==3) {
             for (int i = 0; i < kelime2.length; i++) {
-                if (kelime2[i].equals("A")) {
-                    standart += ("A.B.C+");
-                    standart += ("A.B'.C+");
+                if (kelime2[i].equals("A") ) {
+                    standart+=("A.B.C+");
+                    standart+=("A.B'.C+");
 
-                    standart += ("A.B.C'+");
-                    standart += ("A.B'.C'+");
-                } else if (kelime2[i].equals("A'")) {
+                    standart+=("A.B.C'+");
+                    standart+=("A.B'.C'+");
+                }
+                else if (kelime2[i].equals("A'") ) {
 
-                    standart += ("A'.B.C+");
-                    standart += ("A'.B'.C+");
+                    standart+=("A'.B.C+");
+                    standart+=("A'.B'.C+");
 
-                    standart += ("A'.B.C'+");
-                    standart += ("A'.B'.C'+");
+                    standart+=("A'.B.C'+");
+                    standart+=("A'.B'.C'+");
 
-                } else if (kelime2[i].equals("B")) {
+                }
+                else if (kelime2[i].equals("B") ) {
 
-                    standart += ("A'.B.C+");
-                    standart += ("A.B.C+");
+                    standart+=("A'.B.C+");
+                    standart+=("A.B.C+");
 
-                    standart += ("A'.B.C'+");
-                    standart += ("A.B.C'+");
+                    standart+=("A'.B.C'+");
+                    standart+=("A.B.C'+");
 
-                } else if (kelime2[i].equals("B'")) {
+                }
+                else if (kelime2[i].equals("B'") ) {
 
-                    standart += ("A'.B'.C+");
-                    standart += ("A.B'.C+");
+                    standart+=("A'.B'.C+");
+                    standart+=("A.B'.C+");
 
-                    standart += ("A'.B'.C'+");
-                    standart += ("A.B'.C'+");
+                    standart+=("A'.B'.C'+");
+                    standart+=("A.B'.C'+");
 
-                } else if (kelime2[i].equals("C")) {
+                }
+                else if (kelime2[i].equals("C") ) {
 
-                    standart += ("A'.B.C+");
-                    standart += ("A.B.C+");
+                    standart+=("A'.B.C+");
+                    standart+=("A.B.C+");
 
-                    standart += ("A'.B'.C+");
-                    standart += ("A.B'.C+");
+                    standart+=("A'.B'.C+");
+                    standart+=("A.B'.C+");
 
-                } else if (kelime2[i].equals("C'")) {
+                }
+                else if (kelime2[i].equals("C'") ) {
 
-                    standart += ("A'.B.C'+");
+                    standart+=("A'.B.C'+");
 
-                    standart += ("A.B.C'+");
+                    standart+=("A.B.C'+");
 
 
-                    standart += ("A'.B'.C'+");  // 3 ELAMANLI IMPUTLARDA TEK ELEMANLARI 3 LU YAP
+                    standart+=("A'.B'.C'+");  // 3 ELAMANLI IMPUTLARDA TEK ELEMANLARI 3 LU YAP
 
-                    standart += ("A.B'.C'+");
+                    standart+=("A.B'.C'+");
 
-                } else if (kelime2[i].equals("A.B")) {
-                    standart += ("A.B.C+");
-                    standart += ("A.B.C'+");
+                }
+                else if (kelime2[i].equals("A.B") ) {
+                    standart+=("A.B.C+");
+                    standart+=("A.B.C'+");
 
-                } else if (kelime2[i].equals("A.B'")) {
-                    standart += ("A.B'.C+");
+                }
+                else if (kelime2[i].equals("A.B'") ) {
+                    standart+=("A.B'.C+");
 
-                    standart += ("A.B'.C'+");
+                    standart+=("A.B'.C'+");
 
-                } else if (kelime2[i].equals("A.C")) {
-                    standart += ("A.B.C+");
-                    standart += ("A.B'.C+");
-                } else if (kelime2[i].equals("A.C'")) {
-                    standart += ("A.B.C'+");
+                }
+                else if (kelime2[i].equals("A.C") ) {
+                    standart+=("A.B.C+");
+                    standart+=("A.B'.C+");
+                }
+                else if (kelime2[i].equals("A.C'") ) {
+                    standart+=("A.B.C'+");
 
-                    standart += ("A.B'.C'+");
+                    standart+=("A.B'.C'+");
 
-                } else if (kelime2[i].equals("A'.B")) {
-                    standart += ("A'.B.C+");
-                    standart += ("A'.B.C'+");
+                }
+                else if (kelime2[i].equals("A'.B") ) {
+                    standart+=("A'.B.C+");
+                    standart+=("A'.B.C'+");
 
-                } else if (kelime2[i].equals("A'.B'")) {
-                    standart += ("A'.B'.C+");
+                }
+                else if (kelime2[i].equals("A'.B'") ) {
+                    standart+=("A'.B'.C+");
 
-                    standart += ("A'.B'.C'+");
+                    standart+=("A'.B'.C'+");
 
-                } else if (kelime2[i].equals("A'.C")) {
-                    standart += ("A'.B.C+");
-                    standart += ("A'.B'.C+");
-                } else if (kelime2[i].equals("A'.C'")) {
-                    standart += ("A'.B.C'+");
+                }
+                else if (kelime2[i].equals("A'.C") ) {
+                    standart+=("A'.B.C+");
+                    standart+=("A'.B'.C+");
+                }
+                else if (kelime2[i].equals("A'.C'") ) {
+                    standart+=("A'.B.C'+");
 
-                    standart += ("A'.B'.C'+");
+                    standart+=("A'.B'.C'+");
 
-                } else if (kelime2[i].equals("B.C")) {
-                    standart += ("A.B.C+");
+                }
+                else if (kelime2[i].equals("B.C") ) {
+                    standart+=("A.B.C+");
 
-                    standart += ("A'.B.C+");
+                    standart+=("A'.B.C+");
 
-                } else if (kelime2[i].equals("B.C'")) {
-                    standart += ("A.B.C'+");
+                }
+                else if (kelime2[i].equals("B.C'") ) {
+                    standart+=("A.B.C'+");
 
-                    standart += ("A'.B.C'+");
+                    standart+=("A'.B.C'+");
 
-                } else if (kelime2[i].equals("B'.C")) {
-                    standart += ("A.B'.C+");
+                }
+                else if (kelime2[i].equals("B'.C") ) {
+                    standart+=("A.B'.C+");
 
-                    standart += ("A'.B'.C+");
+                    standart+=("A'.B'.C+");
 
-                } else if (kelime2[i].equals("B'.C'")) {
-                    standart += ("A.B'.C'+");
+                }
+                else if (kelime2[i].equals("B'.C'") ) {
+                    standart+=("A.B'.C'+");
 
-                    standart += ("A'.B'.C'+");
+                    standart+=("A'.B'.C'+");
 // 3 ELEMANLI IMPUTLARDA 2 ELEMANLILARI 3 LU YAP
-                } else if (kelime2[i].equals("A.B.C")) {
-                    standart += ("A.B.C+");
+                }
+                else if (kelime2[i].equals("A.B.C") ) {
+                    standart+=("A.B.C+");
 
-                } else if (kelime2[i].equals("A.B.C'")) {
-                    standart += ("A.B.C'+");
+                }
+                else if (kelime2[i].equals("A.B.C'") ) {
+                    standart+=("A.B.C'+");
 
-                } else if (kelime2[i].equals("A.B'.C")) {
-                    standart += ("A.B'.C+");
+                }
+                else if (kelime2[i].equals("A.B'.C") ) {
+                    standart+=("A.B'.C+");
 
-                } else if (kelime2[i].equals("A.B'.C'")) {
-                    standart += ("A.B'.C'+");
+                }
+                else if (kelime2[i].equals("A.B'.C'") ) {
+                    standart+=("A.B'.C'+");
 
-                } else if (kelime2[i].equals("A'.B.C")) {
-                    standart += ("A'.B.C+");
+                }
+                else if (kelime2[i].equals("A'.B.C") ) {
+                    standart+=("A'.B.C+");
 
-                } else if (kelime2[i].equals("A'.B.C'")) {
-                    standart += ("A'.B.C'+");
+                }
+                else if (kelime2[i].equals("A'.B.C'") ) {
+                    standart+=("A'.B.C'+");
 
-                } else if (kelime2[i].equals("A'.B'.C'")) {
-                    standart += ("A.B.C+");
+                }
+                else if (kelime2[i].equals("A'.B'.C'") ) {
+                    standart+=("A'.B'.C'+");
 
-                } else if (kelime2[i].equals("A'.B'.C")) {    // 3 ELEMANLILARI AYNEN EKLE
-                    standart += ("A.B'.C+");
+                }
+                else if (kelime2[i].equals("A'.B'.C") ) {    // 3 ELEMANLILARI AYNEN EKLE
+                    standart+=("A'.B'.C+");
 
                 }
 
@@ -402,229 +433,303 @@ public class Converter {
 
         }
 
-        if (count == 4) {
+        if (count ==4) {
             for (int i = 0; i < kelime2.length; i++) {
-                if (kelime2[i].equals("A")) {
-                    standart += ("A.B.C.D+A.B.C.D'+A.B.C'.D+A.B.C'.D'+A.B'.C.D+A.B'.C.D'+A.B'.C'.D+A.B'.C'.D'+");
+                if (kelime2[i].equals("A") ) {
+                    standart+=("A.B.C.D+A.B.C.D'+A.B.C'.D+A.B.C'.D'+A.B'.C.D+A.B'.C.D'+A.B'.C'.D+A.B'.C'.D'+");
 
-                } else if (kelime2[i].equals("A'")) {
-                    standart += ("A'.B.C.D+A'.B.C.D'+A'.B.C'.D+A'.B.C'.D'+A'.B'.C.D+A'.B'.C.D'+A'.B'.C'.D+A'.B'.C'.D'+");
+                }
+                else if (kelime2[i].equals("A'") ) {
+                    standart+=("A'.B.C.D+A'.B.C.D'+A'.B.C'.D+A'.B.C'.D'+A'.B'.C.D+A'.B'.C.D'+A'.B'.C'.D+A'.B'.C'.D'+");
 
-                } else if (kelime2[i].equals("B")) {
-                    standart += ("A.B.C.D+A.B.C.D'+A.B.C'.D+A.B.C'.D'+A'.B.C.D+A'.B.C.D'+A'.B.C'.D+A'.B.C'.D'+");
+                }
+                else if (kelime2[i].equals("B") ) {
+                    standart+=("A.B.C.D+A.B.C.D'+A.B.C'.D+A.B.C'.D'+A'.B.C.D+A'.B.C.D'+A'.B.C'.D+A'.B.C'.D'+");
 
-                } else if (kelime2[i].equals("B'")) {
-                    standart += ("A.B'.C.D+A.B'.C.D'+A.B'.C'.D+A.B'.C'.D'+A'.B'.C.D+A'.B'.C.D'+A'.B'.C'.D+A'.B'.C'.D'+");
+                }
+                else if (kelime2[i].equals("B'") ) {
+                    standart+=("A.B'.C.D+A.B'.C.D'+A.B'.C'.D+A.B'.C'.D'+A'.B'.C.D+A'.B'.C.D'+A'.B'.C'.D+A'.B'.C'.D'+");
 
-                } else if (kelime2[i].equals("C")) {
-                    standart += ("A.B.C.D+A.B.C.D'+A.B'.C.D+A.B'.C.D'+A'.B.C.D+A'.B.C.D'+A'.B'.C.D+A'.B'.C.D'+");
+                }
+                else if (kelime2[i].equals("C") ) {
+                    standart+=("A.B.C.D+A.B.C.D'+A.B'.C.D+A.B'.C.D'+A'.B.C.D+A'.B.C.D'+A'.B'.C.D+A'.B'.C.D'+");
 
-                } else if (kelime2[i].equals("C'")) {
-                    standart += ("A.B.C'.D+A.B.C'.D'+A.B'.C'.D+A.B'.C'.D'+A'.B.C'.D+A'.B.C'.D'+A'.B'.C'.D+A'.B'.C'.D'+");
+                }
+                else if (kelime2[i].equals("C'") ) {
+                    standart+=("A.B.C'.D+A.B.C'.D'+A.B'.C'.D+A.B'.C'.D'+A'.B.C'.D+A'.B.C'.D'+A'.B'.C'.D+A'.B'.C'.D'+");
 
-                } else if (kelime2[i].equals("D")) {
-                    standart += ("A.B.C.D+A.B.C'.D+A.B'.C.D+A.B'.C'.D+A'.B.C.D+A'.B.C'.D+A'.B'.C.D+A'.B'.C'.D+");
+                }
+                else if (kelime2[i].equals("D") ) {
+                    standart+=("A.B.C.D+A.B.C'.D+A.B'.C.D+A.B'.C'.D+A'.B.C.D+A'.B.C'.D+A'.B'.C.D+A'.B'.C'.D+");
 
-                } else if (kelime2[i].equals("D'")) {
-                    standart += ("A.B.C.D'+A.B.C'.D'+A.B'.C.D'+A.B'.C'.D'+A'.B.C.D'+A'.B.C'.D'+A'.B'.C.D'+A'.B'.C'.D'+");
+                }
+                else if (kelime2[i].equals("D'") ) {
+                    standart+=("A.B.C.D'+A.B.C'.D'+A.B'.C.D'+A.B'.C'.D'+A'.B.C.D'+A'.B.C'.D'+A'.B'.C.D'+A'.B'.C'.D'+");
 // 4 IMPUT 1 ELEMAN STANDART FORM YAPMA
-                } else if (kelime2[i].equals("A.B")) {
-                    standart += ("A.B.C.D+A.B.C.D'.A.B.C'.D+A.B.C'.D'+");
+                }
+                else if (kelime2[i].equals("A.B") ) {
+                    standart+=("A.B.C.D+A.B.C.D'+A.B.C'.D+A.B.C'.D'+");
 
-                } else if (kelime2[i].equals("A.B'")) {
-                    standart += ("A.B'.C.D+A.B'.C.D'.A.B'.C'.D+A.B'.C'.D'+");
+                }
+                else if (kelime2[i].equals("A.B'") ) {
+                    standart+=("A.B'.C.D+A.B'.C.D'+A.B'.C'.D+A.B'.C'.D'+");
 
-                } else if (kelime2[i].equals("A'.B")) {
-                    standart += ("A'.B.C.D+A'.B.C.D'.A'.B.C'.D+A'.B.C'.D'+");
+                }
+                else if (kelime2[i].equals("A'.B") ) {
+                    standart+=("A'.B.C.D+A'.B.C.D'+A'.B.C'.D+A'.B.C'.D'+");
 
-                } else if (kelime2[i].equals("A'.B'")) {
-                    standart += ("A'.B'.C.D+A'.B'.C.D'.A'.B'.C'.D+A'.B'.C'.D'+");
+                }
+                else if (kelime2[i].equals("A'.B'") ) {
+                    standart+=("A'.B'.C.D+A'.B'.C.D'+A'.B'.C'.D+A'.B'.C'.D'+");
 
-                } else if (kelime2[i].equals("A.C")) {
-                    standart += ("A.B.C.D+A.B.C.D'.A.B'.C.D+A.B'.C.D'+");
+                }
+                else if (kelime2[i].equals("A.C") ) {
+                    standart+=("A.B.C.D+A.B.C.D'+A.B'.C.D+A.B'.C.D'+");
 
-                } else if (kelime2[i].equals("A'.C")) {
-                    standart += ("A'.B.C.D+A'.B.C.D'.A'.B'.C.D+A'.B'.C.D'+");
+                }
+                else if (kelime2[i].equals("A'.C") ) {
+                    standart+=("A'.B.C.D+A'.B.C.D'+A'.B'.C.D+A'.B'.C.D'+");
 
-                } else if (kelime2[i].equals("A.C'")) {
-                    standart += ("A.B.C'.D+A.B.C'.D'.A.B'.C'.D+A.B'.C'.D'+");
+                }
+                else if (kelime2[i].equals("A.C'") ) {
+                    standart+=("A.B.C'.D+A.B.C'.D'+A.B'.C'.D+A.B'.C'.D'+");
 
-                } else if (kelime2[i].equals("A'.C'")) {
-                    standart += ("A'.B.C'.D+A'.B.C'.D'.A'.B'.C'.D+A'.B'.C'.D'+");
+                }
+                else if (kelime2[i].equals("A'.C'") ) {
+                    standart+=("A'.B.C'.D+A'.B.C'.D'+A'.B'.C'.D+A'.B'.C'.D'+");
 
-                } else if (kelime2[i].equals("A.D")) {
-                    standart += ("A.B.C.D+A.B.C'.D.A.B'.C.D+A.B'.C'.D+");
+                }
+                else if (kelime2[i].equals("A.D") ) {
+                    standart+=("A.B.C.D+A.B.C'.D+A.B'.C.D+A.B'.C'.D+");
 
-                } else if (kelime2[i].equals("A'.D")) {
-                    standart += ("A'.B.C.D+A'.B.C'.D.A'.B'.C.D+A'.B'.C'.D+");
+                }
+                else if (kelime2[i].equals("A'.D") ) {
+                    standart+=("A'.B.C.D+A'.B.C'.D+A'.B'.C.D+A'.B'.C'.D+");
 
-                } else if (kelime2[i].equals("A.D'")) {
-                    standart += ("A.B.C.D'+A.B.C'.D'.A.B'.C.D'+A.B'.C'.D'+");
+                }
+                else if (kelime2[i].equals("A.D'") ) {
+                    standart+=("A.B.C.D'+A.B.C'.D'+A.B'.C.D'+A.B'.C'.D'+");
 
-                } else if (kelime2[i].equals("A'.D'")) {
-                    standart += ("A'.B.C.D'+A'.B.C'.D'.A'.B'.C.D'+A'.B'.C'.D'+");
+                }
+                else if (kelime2[i].equals("A'.D'") ) {
+                    standart+=("A'.B.C.D'+A'.B.C'.D'+A'.B'.C.D'+A'.B'.C'.D'+");
 
-                } else if (kelime2[i].equals("B.C")) {
-                    standart += ("A.B.C.D+A.B.C.D'.A'.B.C.D+A'.B.C.D'+");
+                }
+                else if (kelime2[i].equals("B.C") ) {
+                    standart+=("A.B.C.D+A.B.C.D'+A'.B.C.D+A'.B.C.D'+");
 
-                } else if (kelime2[i].equals("B'.C")) {
-                    standart += ("A.B'.C.D+A.B'.C.D'.A'.B'.C.D+A'.B'.C.D'+");
+                }
+                else if (kelime2[i].equals("B'.C") ) {
+                    standart+=("A.B'.C.D+A.B'.C.D'+A'.B'.C.D+A'.B'.C.D'+");
 
-                } else if (kelime2[i].equals("B.C'")) {
-                    standart += ("A.B.C'.D+A.B.C'.D'.A'.B.C'.D+A'.B.C'.D'+");
+                }
+                else if (kelime2[i].equals("B.C'") ) {
+                    standart+=("A.B.C'.D+A.B.C'.D'+A'.B.C'.D+A'.B.C'.D'+");
 
-                } else if (kelime2[i].equals("B'.C'")) {
-                    standart += ("A.B'.C'.D+A.B'.C'.D'.A'.B'.C'.D+A'.B'.C'.D'+");
+                }
+                else if (kelime2[i].equals("B'.C'") ) {
+                    standart+=("A.B'.C'.D+A.B'.C'.D'+A'.B'.C'.D+A'.B'.C'.D'+");
 
-                } else if (kelime2[i].equals("B.D")) {
-                    standart += ("A.B.C.D+A.B.C'.D.A'.B.C.D+A'.B.C'.D+");
+                }
+                else if (kelime2[i].equals("B.D") ) {
+                    standart+=("A.B.C.D+A.B.C'.D+A'.B.C.D+A'.B.C'.D+");
 
-                } else if (kelime2[i].equals("B'.D")) {
-                    standart += ("A.B'.C.D+A.B'.C'.D.A'.B'.C.D+A'.B'.C'.D+");
+                }
+                else if (kelime2[i].equals("B'.D") ) {
+                    standart+=("A.B'.C.D+A.B'.C'.D+A'.B'.C.D+A'.B'.C'.D+");
 
-                } else if (kelime2[i].equals("B'.D'")) {
-                    standart += ("A.B'.C.D'+A.B'.C'.D'.A'.B'.C.D'+A'.B'.C'.D'+");
+                }
+                else if (kelime2[i].equals("B'.D'") ) {
+                    standart+=("A.B'.C.D'+A.B'.C'.D'+A'.B'.C.D'+A'.B'.C'.D'+");
 
-                } else if (kelime2[i].equals("B.D'")) {
-                    standart += ("A.B.C.D'+A.B.C'.D'.A'.B.C.D'+A'.B.C'.D'+");
+                }
+                else if (kelime2[i].equals("B.D'") ) {
+                    standart+=("A.B.C.D'+A.B.C'.D'+A'.B.C.D'+A'.B.C'.D'+");
 
-                } else if (kelime2[i].equals("C.D")) {
-                    standart += ("A.B.C.D+A.B'.C.D.A'.B.C.D+A'.B'.C.D+");
+                }
+                else if (kelime2[i].equals("C.D") ) {
+                    standart+=("A.B.C.D+A.B'.C.D+A'.B.C.D+A'.B'.C.D+");
 
-                } else if (kelime2[i].equals("C.D'")) {
-                    standart += ("A.B.C.D'+A.B'.C.D'.A'.B.C.D'+A'.B'.C.D'+");
+                }
+                else if (kelime2[i].equals("C.D'") ) {
+                    standart+=("A.B.C.D'+A.B'.C.D'+A'.B.C.D'+A'.B'.C.D'+");
 
-                } else if (kelime2[i].equals("C'.D")) {
-                    standart += ("A.B.C'.D+A.B'.C'.D.A'.B.C'.D+A'.B'.C'.D+");
+                }
+                else if (kelime2[i].equals("C'.D") ) {
+                    standart+=("A.B.C'.D+A.B'.C'.D+A'.B.C'.D+A'.B'.C'.D+");
 
-                } else if (kelime2[i].equals("C'.D'")) {
-                    standart += ("A.B.C'.D'+A.B'.C'.D'.A'.B.C'.D'+A'.B'.C'.D'+");
+                }
+                else if (kelime2[i].equals("C'.D'") ) {
+                    standart+=("A.B.C'.D'+A.B'.C'.D'+A'.B.C'.D'+A'.B'.C'.D'+");
 // 4 IMPUTLUDA 2 ELEMANLARIN STANDART FORMA DONUSU
-                } else if (kelime2[i].equals("A.B.C")) {
-                    standart += ("A.B.C.D+A.B.C.D'+");
+                }
+                else if (kelime2[i].equals("A.B.C") ) {
+                    standart+=("A.B.C.D+A.B.C.D'+");
 
-                } else if (kelime2[i].equals("A.B'.C")) {
-                    standart += ("A.B'.C.D+A.B'.C.D'+");
+                }
+                else if (kelime2[i].equals("A.B'.C") ) {
+                    standart+=("A.B'.C.D+A.B'.C.D'+");
 
-                } else if (kelime2[i].equals("A.B'.C'")) {
-                    standart += ("A.B'.C'.D+A.B'.C'.D'+");
+                }
+                else if (kelime2[i].equals("A.B'.C'") ) {
+                    standart+=("A.B'.C'.D+A.B'.C'.D'+");
 
-                } else if (kelime2[i].equals("A'.B.C")) {
-                    standart += ("A'.B.C.D+A'.B.C.D'+");
+                }
+                else if (kelime2[i].equals("A'.B.C") ) {
+                    standart+=("A'.B.C.D+A'.B.C.D'+");
 
-                } else if (kelime2[i].equals("A.B.C")) {
-                    standart += ("A'.B'.C.D+A'.B'.C.D'+");
+                }
+                else if (kelime2[i].equals("A'.B'.C") ) {
+                    standart+=("A'.B'.C.D+A'.B'.C.D'+");
 
-                } else if (kelime2[i].equals("A.B.C")) {
-                    standart += ("A'.B'.C'.D+A'.B'.C'.D'+");
+                }
+                else if (kelime2[i].equals("A'.B'.C'") ) {
+                    standart+=("A'.B'.C'.D+A'.B'.C'.D'+");
 
-                } else if (kelime2[i].equals("A.B.D")) {
-                    standart += ("A.B.C.D+A.B.C'.D+");
+                }
+                else if (kelime2[i].equals("A.B.D") ) {
+                    standart+=("A.B.C.D+A.B.C'.D+");
 
-                } else if (kelime2[i].equals("A.B'.D")) {
-                    standart += ("A.B'.C.D+A.B'.C'.D+");
+                }
+                else if (kelime2[i].equals("A.B'.D") ) {
+                    standart+=("A.B'.C.D+A.B'.C'.D+");
 
-                } else if (kelime2[i].equals("A.B'.D'")) {
-                    standart += ("A.B'.C.D'+A.B'.C'.D'+");
+                }
+                else if (kelime2[i].equals("A.B'.D'") ) {
+                    standart+=("A.B'.C.D'+A.B'.C'.D'+");
 
-                } else if (kelime2[i].equals("A'.B.D")) {
-                    standart += ("A'.B.C.D+A'.B.C'.D+");
+                }
+                else if (kelime2[i].equals("A'.B.D") ) {
+                    standart+=("A'.B.C.D+A'.B.C'.D+");
 
-                } else if (kelime2[i].equals("A'.B'.D")) {
-                    standart += ("A'.B'.C.D+A'.B'.C'.D+");
+                }
+                else if (kelime2[i].equals("A'.B'.D") ) {
+                    standart+=("A'.B'.C.D+A'.B'.C'.D+");
 
-                } else if (kelime2[i].equals("A'.B'.D'")) {
-                    standart += ("A'.B'.C.D'+A'.B'.C'.D'+");
+                }
+                else if (kelime2[i].equals("A'.B'.D'") ) {
+                    standart+=("A'.B'.C.D'+A'.B'.C'.D'+");
 
-                } else if (kelime2[i].equals("A.C.D")) {
-                    standart += ("A.B.C.D+A.B'.C.D+");
+                }
+                else if (kelime2[i].equals("A.C.D") ) {
+                    standart+=("A.B.C.D+A.B'.C.D+");
 
-                } else if (kelime2[i].equals("A.C'.D")) {
-                    standart += ("A.B.C'.D+A.B'.C'.D+");
+                }
+                else if (kelime2[i].equals("A.C'.D") ) {
+                    standart+=("A.B.C'.D+A.B'.C'.D+");
 
-                } else if (kelime2[i].equals("A.C'.D'")) {
-                    standart += ("A.B.C'.D'+A.B'.C'.D'+");
+                }
+                else if (kelime2[i].equals("A.C'.D'") ) {
+                    standart+=("A.B.C'.D'+A.B'.C'.D'+");
 
-                } else if (kelime2[i].equals("A'.C.D")) {
-                    standart += ("A'.B.C.D+A'.B'.C.D+");
+                }
+                else if (kelime2[i].equals("A'.C.D") ) {
+                    standart+=("A'.B.C.D+A'.B'.C.D+");
 
-                } else if (kelime2[i].equals("A'.C'.D")) {
-                    standart += ("A'.B.C'.D+A'.B'.C'.D+");
+                }
+                else if (kelime2[i].equals("A'.C'.D") ) {
+                    standart+=("A'.B.C'.D+A'.B'.C'.D+");
 
-                } else if (kelime2[i].equals("A'.C'.D'")) {
-                    standart += ("A'.B.C'.D'+A'.B'.C'.D'+");
+                }
+                else if (kelime2[i].equals("A'.C'.D'") ) {
+                    standart+=("A'.B.C'.D'+A'.B'.C'.D'+");
 
-                } else if (kelime2[i].equals("B.C.D")) {
-                    standart += ("A.B.C.D+A'.B.C.D+");
+                }
+                else if (kelime2[i].equals("B.C.D") ) {
+                    standart+=("A.B.C.D+A'.B.C.D+");
 
-                } else if (kelime2[i].equals("B.C.D'")) {
-                    standart += ("A.B.C.D'+A'.B.C.D'+");
+                }
+                else if (kelime2[i].equals("B.C.D'") ) {
+                    standart+=("A.B.C.D'+A'.B.C.D'+");
 
-                } else if (kelime2[i].equals("B.C'.D")) {
-                    standart += ("A.B.C'.D+A'.B.C'.D+");
+                }
+                else if (kelime2[i].equals("B.C'.D") ) {
+                    standart+=("A.B.C'.D+A'.B.C'.D+");
 
-                } else if (kelime2[i].equals("B'.C.D")) {
-                    standart += ("A.B'.C.D+A'.B'.C.D+");
+                }
+                else if (kelime2[i].equals("B'.C.D") ) {
+                    standart+=("A.B'.C.D+A'.B'.C.D+");
 
-                } else if (kelime2[i].equals("B.C'.D'")) {
-                    standart += ("A.B.C'.D'+A'.B.C'.D'+");
+                }
+                else if (kelime2[i].equals("B.C'.D'") ) {
+                    standart+=("A.B.C'.D'+A'.B.C'.D'+");
 
-                } else if (kelime2[i].equals("B'.C'.D")) {
-                    standart += ("A.B'.C'.D+A'.B'.C'.D+");
+                }
+                else if (kelime2[i].equals("B'.C'.D") ) {
+                    standart+=("A.B'.C'.D+A'.B'.C'.D+");
 
-                } else if (kelime2[i].equals("B'.C'.D'")) {
-                    standart += ("A.B'.C'.D'+A'.B'.C'.D'+");
+                }
+                else if (kelime2[i].equals("B'.C'.D'") ) {
+                    standart+=("A.B'.C'.D'+A'.B'.C'.D'+");
 
-                } else if (kelime2[i].equals("B'.C.D'")) {
-                    standart += ("A.B'.C.D'+A'.B'.C.D'+");
+                }
+                else if (kelime2[i].equals("B'.C.D'") ) {
+                    standart+=("A.B'.C.D'+A'.B'.C.D'+");
 // 4 LU INPUTLARDA 3 ELEMANLILARIN STANDART FORMU
-                } else if (kelime2[i].equals("A.B.C.D")) {
-                    standart += ("A.B.C.D+");
+                }
+                else if (kelime2[i].equals("A.B.C.D") ) {
+                    standart+=("A.B.C.D+");
 
-                } else if (kelime2[i].equals("A'.B.C.D")) {
-                    standart += ("A'.B.C.D+");
+                }
+                else if (kelime2[i].equals("A'.B.C.D") ) {
+                    standart+=("A'.B.C.D+");
 
-                } else if (kelime2[i].equals("A.B.C.D'")) {
-                    standart += ("A.B.C.D'+");
+                }
+                else if (kelime2[i].equals("A.B.C.D'") ) {
+                    standart+=("A.B.C.D'+");
 
-                } else if (kelime2[i].equals("A'.B.C.D'")) {
-                    standart += ("A'.B.C.D'+");
+                }
+                else if (kelime2[i].equals("A'.B.C.D'") ) {
+                    standart+=("A'.B.C.D'+");
 
-                } else if (kelime2[i].equals("A.B.C'.D")) {
-                    standart += ("A.B.C'.D+");
+                }
+                else if (kelime2[i].equals("A.B.C'.D") ) {
+                    standart+=("A.B.C'.D+");
 
-                } else if (kelime2[i].equals("A'.B.C'.D")) {
-                    standart += ("A'.B.C'.D+");
+                }
+                else if (kelime2[i].equals("A'.B.C'.D") ) {
+                    standart+=("A'.B.C'.D+");
 
-                } else if (kelime2[i].equals("A.B'.C.D")) {
-                    standart += ("A.B'.C.D+");
+                }
 
-                } else if (kelime2[i].equals("A'.B'.C.D")) {
-                    standart += ("A'.B'.C.D+");
+                else if (kelime2[i].equals("A.B'.C.D") ) {
+                    standart+=("A.B'.C.D+");
 
-                } else if (kelime2[i].equals("A.B.C'.D'")) {
-                    standart += ("A.B.C'.D'+");
+                }
+                else if (kelime2[i].equals("A'.B'.C.D") ) {
+                    standart+=("A'.B'.C.D+");
 
-                } else if (kelime2[i].equals("A'.B.C'.D'")) {
-                    standart += ("A'.B.C'.D'+");
+                }
+                else if (kelime2[i].equals("A.B.C'.D'") ) {
+                    standart+=("A.B.C'.D'+");
 
-                } else if (kelime2[i].equals("A.B'.C.D'")) {
-                    standart += ("A.B'.C.D'+");
+                }
+                else if (kelime2[i].equals("A'.B.C'.D'") ) {
+                    standart+=("A'.B.C'.D'+");
 
-                } else if (kelime2[i].equals("A'.B'.C.D'")) {
-                    standart += ("A'.B'.C.D'+");
+                }
+                else if (kelime2[i].equals("A.B'.C.D'") ) {
+                    standart+=("A.B'.C.D'+");
 
-                } else if (kelime2[i].equals("A.B'.C'.D")) {
-                    standart += ("A.B'.C'.D+");
+                }
+                else if (kelime2[i].equals("A'.B'.C.D'") ) {
+                    standart+=("A'.B'.C.D'+");
 
-                } else if (kelime2[i].equals("A'.B'.C.'D")) {
-                    standart += ("A'.B'.C'.D+");
+                }
+                else if (kelime2[i].equals("A.B'.C'.D") ) {
+                    standart+=("A.B'.C'.D+");
 
-                } else if (kelime2[i].equals("A.B'.C'.D'")) {
-                    standart += ("A.B'.C'.D'+");
+                }
+                else if (kelime2[i].equals("A'.B'.C'.D") ) {
+                    standart+=("A'.B'.C'.D+");
 
-                } else if (kelime2[i].equals("A'.B'.C'.D'")) {
-                    standart += ("A'.B'.C'.D'+");
+                }
+                else if (kelime2[i].equals("A.B'.C'.D'") ) {
+                    standart+=("A.B'.C'.D'+");
+
+                }
+                else if (kelime2[i].equals("A'.B'.C'.D'") ) {
+                    standart+=("A'.B'.C'.D'+");
 
                 }
 

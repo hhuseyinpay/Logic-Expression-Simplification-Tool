@@ -52,9 +52,9 @@ public class FileOperation {
                     case 9:
                         if (line.charAt(0) == 'A' && line.charAt(1) == ','
                                 && line.charAt(2) == 'B' && line.charAt(3) == ','
-                                && line.charAt(2) == 'C' && line.charAt(3) == ','
-                                && line.charAt(2) == 'D' && line.charAt(3) == ';'
-                                && line.charAt(4) == 'F') {
+                                && line.charAt(4) == 'C' && line.charAt(5) == ','
+                                && line.charAt(6) == 'D' && line.charAt(7) == ';'
+                                && line.charAt(8) == 'F') {
                             return checker(br, 4);
                         } else return null;
                 }

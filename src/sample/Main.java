@@ -235,6 +235,7 @@ public class Main extends Application {
             }
             simpleEx.deletePreviousChar();
             simpleEx.deletePreviousChar();
+            simpleEx.deletePreviousChar();
 
             isBE = false;
         });
@@ -512,6 +513,7 @@ public class Main extends Application {
             int len = convert.beTOtt(booleanABA.getText()).length;
             System.out.println(booleanABA.getText());
             String[] temp = convert.beTOtt(booleanABA.getText());
+            fColumnBA.appendText("F\n");
             for (int i = 0; i < len; i++) {
                 fColumnBA.appendText(temp[i] + "\n");
             }
@@ -635,12 +637,12 @@ public class Main extends Application {
         simplifyManuel.setOnAction(e -> {
             simpleExManuelBA.clear();
             if (booleanABA.getText() != null) {
-                booleanEx= convert.toSOP(booleanABA.getText());
+                booleanEx= (convert.toSOP(booleanABA.getText()));
                 if (booleanEx[0].contains("D")) len = 16;
                 else if (booleanEx[0].contains("C")) len = 8;
                 else if (booleanEx[0].contains("B")) len = 4;
             }
-            for (String sim : booleanExpression.simplify(convert.beTObaNode(booleanEx))) {
+            for (String sim :  booleanExpression.simplify(convert.beTObaNode(convert.toSOP(booleanABA.getText())))) {
                 simpleExManuelBA.appendText((sim.endsWith(".") ? sim.subSequence(0, sim.length() - 2) : sim) + "+");
                 System.out.println(sim);
             }
@@ -840,6 +842,7 @@ public class Main extends Application {
         mainTurnKM.setOnAction(e->{
             simpEx.clear();
             karMap.clear();
+            simpEx.getStyleClass().clear();
             window.setScene(mainScene);
         });
         HBox KMapEnd = new HBox();
@@ -861,20 +864,20 @@ public class Main extends Application {
                         + "A  " + karnaugh[1][0].getKey() + "   " + karnaugh[1][1].getKey());
                 KMap.getStyleClass().add("KMap2");
             } else if (len == 8) {
-                KMap.appendText("A B/C: 0  1\n"
-                        + "***********\n"
-                        + "0 0   |" + karnaugh[0][0].getKey() + "  " + karnaugh[0][1].getKey() + "\n"
-                        + "0 1   |" + karnaugh[1][0].getKey() + "  " + karnaugh[1][1].getKey() + "\n"
-                        + "1 1   |" + karnaugh[2][0].getKey() + "  " + karnaugh[2][1].getKey() + "\n"
-                        + "1 0   |" + karnaugh[3][0].getKey() + "  " + karnaugh[3][1].getKey());
+                KMap.appendText("A B |C:0  1\n"
+                        + "----|------\n"
+                        + "0 0 |  " + karnaugh[0][0].getKey() + "  " + karnaugh[0][1].getKey() + "\n"
+                        + "0 1 |  " + karnaugh[1][0].getKey() + "  " + karnaugh[1][1].getKey() + "\n"
+                        + "1 1 |  " + karnaugh[2][0].getKey() + "  " + karnaugh[2][1].getKey() + "\n"
+                        + "1 0 |  " + karnaugh[3][0].getKey() + "  " + karnaugh[3][1].getKey());
                 KMap.getStyleClass().add("KMap3");
             } else if (len == 16) {
-                KMap.appendText("A B/C D: 00  01  11  10\n"
-                        + "***********\n"
-                        + "0 0   |" + karnaugh[0][0].getKey() + "  " + karnaugh[0][1].getKey() + karnaugh[0][2].getKey() + "  " + karnaugh[0][3].getKey() + "\n"
-                        + "0 1   |" + karnaugh[1][0].getKey() + "  " + karnaugh[1][1].getKey() + karnaugh[1][2].getKey() + "  " + karnaugh[1][3].getKey() + "\n"
-                        + "1 1   |" + karnaugh[2][0].getKey() + "  " + karnaugh[2][1].getKey() + karnaugh[2][2].getKey() + "  " + karnaugh[2][3].getKey() + "\n"
-                        + "1 0   |" + karnaugh[3][0].getKey() + "  " + karnaugh[3][1].getKey() + karnaugh[3][2].getKey() + "  " + karnaugh[3][3].getKey());
+                KMap.appendText("A B |C D: 00  01  11  10\n"
+                        + "----|----------------\n"
+                        + "0 0 |     " + karnaugh[0][0].getKey() + "   " + karnaugh[0][1].getKey()+"   " + karnaugh[0][2].getKey() + "   " + karnaugh[0][3].getKey() + "\n"
+                        + "0 1 |     " + karnaugh[1][0].getKey() + "   " + karnaugh[1][1].getKey()+"   " + karnaugh[1][2].getKey() + "   " + karnaugh[1][3].getKey() + "\n"
+                        + "1 1 |     " + karnaugh[2][0].getKey() + "   " + karnaugh[2][1].getKey()+"   " + karnaugh[2][2].getKey() + "   " + karnaugh[2][3].getKey() + "\n"
+                        + "1 0 |     " + karnaugh[3][0].getKey() + "   " + karnaugh[3][1].getKey()+"   " + karnaugh[3][2].getKey() + "   " + karnaugh[3][3].getKey());
                 KMap.getStyleClass().add("KMap4");
             }
         }
@@ -898,6 +901,7 @@ public class Main extends Application {
             KMap.clear();
             window.setScene(mainScene);
         });
+
         HBox KmapLay = new HBox();
         KmapLay.getChildren().addAll(KMap,simpKmap,mainTurnKmap);
         KmapLay.setSpacing(15);

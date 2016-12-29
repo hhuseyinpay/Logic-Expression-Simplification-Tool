@@ -96,7 +96,7 @@
                      -fx-font-size: 18;
                      -fx-text-fill: #ffffff;
                      -fx-display-caret:true;
-                      -fx-min-height: 450;
+                      -fx-min-height: 480;
                        -fx-max-height:450;
                          -fx-min-width: 40;
                                      -fx-max-width:40;
@@ -157,7 +157,7 @@
             -fx-display-caret:true;
               -fx-min-width: 105;
               -fx-max-width:105;
-                -fx-min-height: 450;
+                -fx-min-height: 480;
                 -fx-max-height:450;
 
 }

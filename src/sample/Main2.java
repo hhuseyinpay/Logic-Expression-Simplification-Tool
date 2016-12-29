@@ -52,7 +52,7 @@ public class Main2 {
         String[] a2 = {"A'.B'", "A'.B","A.B'"};
 
 
-        KMSimplification km = new KMSimplification();
+        KarnaughMap km = new KarnaughMap();
         Converter converter = new Converter();
 
         System.out.println(km.simplify(converter.beTOkm(a2)));
